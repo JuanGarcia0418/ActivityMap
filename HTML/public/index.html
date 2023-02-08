@@ -23,37 +23,37 @@
 
 
   <!-- bootstrap core css -->
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+  <link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
 
   <!-- fonts style -->
   <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700|Roboto:400,700&display=swap" rel="stylesheet">
 
   <!-- Custom styles for this template -->
-  <link href="css/style.css" rel="stylesheet" />
+  <link href="../css/style.css" rel="stylesheet" />
   <!-- responsive style -->
-  <link href="css/responsive.css" rel="stylesheet" />
+  <link href="../css/responsive.css" rel="stylesheet" />
 </head>
 
-<body class="sub_page">
+<body>
   <div class="hero_area">
     <!-- header section strats -->
     <header class="header_section">
       <div class="container">
         <div class="top_contact-container">
           <div class="tel_container">
-              <a href="">
-                  <img src="images/proteger.png" alt="">Dashboard 7WS
-              </a>
+            <a href="">
+              <img src="../images/proteger.png" alt="">Dashboard 7WS
+            </a>
           </div>
           <div class="social-container">
             <a href="">
-              <img src="images/fb.png" alt="" class="s-1">
+              <img src="../images/fb.png" alt="" class="s-1">
             </a>
             <a href="">
-              <img src="images/twitter.png" alt="" class="s-2">
+              <img src="../images/twitter.png" alt="" class="s-2">
             </a>
             <a href="">
-              <img src="images/instagram.png" alt="" class="s-3">
+              <img src="../images/instagram.png" alt="" class="s-3">
             </a>
           </div>
         </div>
@@ -61,7 +61,7 @@
       <div class="container-fluid">
         <nav class="navbar navbar-expand-lg custom_nav-container pt-3">
           <a class="navbar-brand" href="index.html">
-            <img src="images/red.png" alt="">
+            <img src="../images/red.png" alt="">
             <span>
               DB7WS
             </span>
@@ -84,7 +84,7 @@
                   <a class="nav-link" href="activities.html"> Activities </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="activityMaps.html"> Activity MAps </a>
+                  <a class="nav-link" href="activityMaps.html"> Activity Maps </a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="news.html"> News </a>
@@ -93,13 +93,13 @@
                   <a class="nav-link" href="contact.html">Contact us</a>
                 </li>
               </ul>
-              <form class="form-inline">
+              <form class="form-inline ">
                 <input type="search" placeholder="Search">
                 <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit"></button>
               </form>
               <div class="login_btn-contanier ml-0 ml-lg-5">
                 <a href="">
-                  <img src="images/user.png" alt="">
+                  <img src="../images/user.png" alt="">
                   <span>
                     Login
                   </span>
@@ -112,35 +112,59 @@
       </div>
     </header>
     <!-- end header section -->
-  </div>
+    <!-- slider section -->
+    <section class=" slider_section position-relative">
+      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="img-box">
+                    <img src="../images/digitalizacion.png" alt="">
+                  </div>
+                </div>
+                <div class="col-md-8">
+                  <div class="detail-box">
+                    <h1>
+                      Welcome To Our <br>
+                      <span>
+                        Dashboard for visualization of activities by nodes
+                      </span>
 
-  <!-- about section -->
-  <section class="about_section layout_padding">
-    <div class="container">
-      <div class="custom_heading-container ">
-        <h2>
-          News
-        </h2>
-      </div>
+                    </h1>
+                    <p>
+                      This is a tool that allows custumers to graphically visualize the status and progress obtained in
+                      the penetration tests performed.
+                    </p>
+                    <div>
+                      <a href="">
+                        Buy Now
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
-      <div class="img-box">
-        <img src="images/conferencia.png" alt="">
-      </div>
-      <div class="detail-box">
-          <p>
-              Always on the cutting edge of cybersecurity
-          </p>
-        <div class="d-flex justify-content-center">
-          <a href="">
-            Read More
+          <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="sr-only">Next</span>
           </a>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- end about section -->
 
+    </section>
+    <!-- end slider section -->
+  </div>
 
   <section class="feature_section  layout_padding">
     <div class="container">
@@ -202,10 +226,10 @@
           </div>
           <div class="detail-box">
             <h5>
-              FAST DELIVERY OF RESULTS
+              Fast delivery of results
             </h5>
             <p>
-               On-line monitoring with real-time visualizations
+              On-line monitoring with real-time visualizations
             </p>
           </div>
         </div>
@@ -234,12 +258,12 @@
             </svg>
           </div>
           <div class="detail-box">
-              <h5>
-                  CERTIFIED PENETRATION TESTING
-              </h5>
-              <p>
-                  Reports of each test activity for your projects
-              </p>
+            <h5>
+              Certified penetration testing
+            </h5>
+            <p>
+              Reports of each test activity for your projects
+            </p>
           </div>
         </div>
         <div class="box">
@@ -340,46 +364,259 @@
 
   <!-- end feature section -->
 
-  <div class="layout_padding-bottom">
-    <!-- discount section -->
+  <!-- discount section -->
 
-    <section class="discount_section">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-lg-3 col-md-5 offset-md-2">
-            <div class="detail-box">
-              <h2>
-               Your company <br>
-                you will be with <br>
-                us
-                <span>
-                  100% protected.
-                </span>
+  <section class="discount_section">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-3 col-md-5 offset-md-2">
+          <div class="detail-box">
+            <h2>
+              Your company <br>
+              you will be with <br>
+              us
+              <span>
+                100% protected.
+              </span>
+            </h2>
+            <p>
+              Contract with us
+            <div>
+              <a href="">
+                Buy Now
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-7 col-md-5">
+          <div class="img-box">
+            <img src="../images/stesting.jpeg" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-              </h2>
-              <p>
-                It is a long established fact that a reader will be distracted by
-              </p>
-              <div>
+
+  <!-- end discount section -->
+
+  <!-- health section -->
+
+  <section class="health_section layout_padding">
+    <div class="health_carousel-container">
+      <h2 class="text-uppercase">
+        Activity Maps
+      </h2>
+      <div class="carousel-wrap layout_padding2">
+        <div class="owl-carousel owl-2">
+          <div class="item">
+            <div class="box">
+              <div class="btn_container">
                 <a href="">
-                  Buy Now
+                  Mp042023
                 </a>
+              </div>
+              <div class="img-box">
+                <img src="../images/conectando.png" alt="">
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="d-flex justify-content-center">
+          <a href="">
+            View activity map
+          </a>
+        </div>
+  </section>
+
+  <!-- end health section -->
+
+  <!-- about section -->
+  <section class="about_section layout_padding">
+    <div class="container">
+      <div class="custom_heading-container ">
+        <h2>
+          Projects
+        </h2>
+      </div>
+
+      <div class="img-box">
+        <img src="../images/conferencia.png" alt="">
+      </div>
+      <div class="detail-box">
+        <p>
+          Create your test project with your preferences.
+        </p>
+        <div class="d-flex justify-content-center">
+          <a href="">
+            Create project
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end about section -->
+
+  <!-- client section -->
+  <section class="client_section layout_padding">
+    <div class="container">
+      <div class="custom_heading-container ">
+        <h2>
+          What is says our clients
+        </h2>
+      </div>
+      <div id="carouselExample2Indicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#carouselExample2Indicators" data-slide-to="0" class="active"></li>
+          <li data-target="#carouselExample2Indicators" data-slide-to="1"></li>
+          <li data-target="#carouselExample2Indicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="client_container layout_padding2">
+              <div class="client_detail">
+                <p>
+                  Excellent service.
+                </p>
+              </div>
+              <div class="client_box ">
+                <div class="img-box">
+                  <img src="../images/client.png " alt="">
+                </div>
+                <div class="name">
+                  <h5>
+                    Juanito Perez
+                  </h5>
+                  <h6>
+                    <span>
+                      Client
+                    </span>
+                    <img src="../images/quote.png" alt="">
+                  </h6>
+                </div>
               </div>
             </div>
           </div>
-          <div class="col-lg-7 col-md-5">
-            <div class="img-box">
-              <img src="images/stesting.jpeg" alt="">
+          <div class="carousel-item">
+            <div class="client_container layout_padding2">
+              <div class="client_detail">
+                <p>
+                  The best and timely diagnosis.
+                </p>
+              </div>
+              <div class="client_box ">
+                <div class="img-box">
+                  <img src="../images/client.png " alt="">
+                </div>
+                <div class="name">
+                  <h5>
+                    Eclesiastico Morino
+                  </h5>
+                  <h6>
+                    <span>
+                      Client
+                    </span>
+                    <img src="../images/quote.jpg" alt="">
+                  </h6>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="client_container layout_padding2">
+              <div class="client_detail">
+                <p>
+                  Their service and efficiency was what I liked the most.
+                </p>
+              </div>
+              <div class="client_box ">
+                <div class="img-box">
+                  <img src="../images/client.png " alt="">
+                </div>
+                <div class="name">
+                  <h5>
+                    Fulano Perencejo
+                  </h5>
+                  <h6>
+                    <span>
+                      Client
+                    </span>
+                    <img src="../images/quote.png" alt="">
+                  </h6>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
-
-    <!-- end discount section -->
-  </div>
 
 
+    </div>
+  </section>
+  <!-- end client section -->
+
+  <!-- contact section -->
+  <section class="contact_section">
+    <div class="container">
+      <div class="row">
+        <div class="custom_heading-container ">
+          <h2>
+            Request A call back
+          </h2>
+        </div>
+      </div>
+    </div>
+    <div class="container layout_padding2">
+      <div class="row">
+        <div class="col-md-5">
+          <div class="form_contaier">
+            <form>
+              <div class="form-group">
+                <label for="exampleInputName1">Name</label>
+                <input type="text" class="form-control" id="exampleInputName1">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputNumber1">Phone Number</label>
+                <input type="text" class="form-control" id="exampleInputNumber1">
+              </div>
+
+              <div class="form-group">
+                <label for="exampleInputEmail1">Email </label>
+                <input type="email" class="form-control" id="exampleInputEmail1">
+              </div>
+              <div class="form-group ">
+                <label for="inputState"> Select the test of your interest </label>
+                <select id="inputState" class="form-control">
+                  <option selected>Activity 1</option>
+                  <option selected>Activity 2</option>
+                  <option selected>Activity 3</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputMessage">Message</label>
+                <input type="text" class="form-control" id="exampleInputMessage">
+              </div>
+              <button type="submit" class="">Send</button>
+            </form>
+          </div>
+        </div>
+        <div class="col-md-7">
+          <div class="detail-box">
+            <h3>
+              You'r company in the best hands
+            </h3>
+            <p>
+              Contract with us
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end contact section -->
 
   <!-- info section -->
   <section class="info_section layout_padding2">
@@ -392,7 +629,7 @@
             </h4>
             <div class="box">
               <div class="img-box">
-                <img src="images/telephone-symbol-button.png" alt="">
+                <img src="../images/telephone-symbol-button.png" alt="">
               </div>
               <div class="detail-box">
                 <h6>
@@ -402,7 +639,7 @@
             </div>
             <div class="box">
               <div class="img-box">
-                <img src="images/email.png" alt="">
+                <img src="../images/email.png" alt="">
               </div>
               <div class="detail-box">
                 <h6>
@@ -422,13 +659,13 @@
                 <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="about.html"> About </a>
+                <a class="nav-link" href="projects.html"> Projects </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="medicine.html"> Medicine </a>
+                <a class="nav-link" href="activities.html"> Activities </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="buy.html"> Online Buy </a>
+                <a class="nav-link" href="activityMaps.html"> Activity Maps </a>
               </li>
             </ul>
           </div>
@@ -440,7 +677,7 @@
             </h4>
             <form action="">
               <input type="text" placeholder="Enter Your email">
-              <div class="d-flex justify-content-center justify-content-md-end mt-3">
+              <div class="d-flex justify-content-center justify-content-end mt-3">
                 <button>
                   Subscribe
                 </button>
