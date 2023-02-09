@@ -34,7 +34,7 @@
   <link href="css/responsive.css" rel="stylesheet" />
 </head>
 
-<body>
+<body class="sub_page">
   <div class="hero_area">
     <!-- header section strats -->
     <header class="header_section">
@@ -78,9 +78,9 @@
                   <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="projects.html">Projects</a>
+                  <a class="nav-link" href="projects.html"> Projects </a>
                 </li>
-                <li class="nav-item">
+                 <li class="nav-item">
                     <a class="nav-link" href="projectsuser.html"> Evidence of activities in your project </a>
                 </li>
               </ul>
@@ -103,39 +103,56 @@
       </div>
     </header>
     <!-- end header section -->
-    <!-- slider section -->
-    <section class=" slider_section position-relative">
-      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <div class="container">
-              <div class="row">
-                <div class="col-md-4">
-                  <div class="img-box">
-                    <img src="images/digitalizacion.png" alt="">
+
+  <!-- contact section -->
+  <section class="contact_section layout_padding">
+    <div class="container">
+      <div class="row">
+        <div class="custom_heading-container ">
+          <h2>
+            Project management
+          </h2>
+        </div>
+      </div>
+    </div>
+    <div class="container layout_padding2">
+      <div class="row">
+        <div class="col-md-5">
+          <div class="form_contaier">
+              <form>
+                  <div class="form-group">
+                      <label for="exampleInputName1"> Project name </label>
+                      <input type="text" class="form-control" id="exampleInputName1">
                   </div>
-                </div>
-                <div class="col-md-8">
-                  <div class="detail-box">
-                    <h1>
-                      Welcome To Our <br>
-                    <span>
-                      Dashboard for visualization of activities by nodes
-                     </span>
-                    </h1>
-                    <p>
-                      This is a tool that allows custumers to graphically visualize the status and progress obtained in the penetration tests performed.
-                    </p>
-                    <div>
-                      <a href="">
-                        Buy Now
-                      </a>
-                    </div>
+                  <div class="form-group">
+                      <label for="exampleInputNumber1"> Number Id. </label>
+                      <input type="text" class="form-control" id="exampleInputNumber1">
+                  </div>
+
+                  <div class="form-group">
+                      <label for="exampleInputMessage"> Project description </label>
+                      <input type="text" class="form-control" id="exampleInputEmail1">
+                  </div>
+                  <div class="form-group ">
+                      <label for="inputState">Select the test of your interest</label>
+                      <select id="inputState" class="form-control">
+                          <option selected> Vulnerability scanning </option>
+                          <option selected> Security scanning </option>
+                          <option selected> Penetration testing </option>
+                          <option selected> Ethical hacking </option>
+                          <option selected> Posture assessment </option>
+                      </select>
+                  </div>
+                  <div class="form-group">
+                      <label for="exampleInputMessage"> Description of result </label>
+                      <input type="text" class="form-control" id="exampleInputMessage">
+                  </div>
+                  <button type="submit" class=""> Create a connection </button>
+                  <button type="submit" class=""> Upload </button>
+              </form>
+          </div>
+        </div>
+      
 
   <!-- footer section -->
 

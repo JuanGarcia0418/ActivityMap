@@ -34,7 +34,7 @@
   <link href="css/responsive.css" rel="stylesheet" />
 </head>
 
-<body>
+<body class="sub_page">
   <div class="hero_area">
     <!-- header section strats -->
     <header class="header_section">
@@ -78,9 +78,9 @@
                   <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="projects.html">Projects</a>
+                  <a class="nav-link" href="projects.html"> Projects </a>
                 </li>
-                <li class="nav-item">
+                 <li class="nav-item">
                     <a class="nav-link" href="projectsuser.html"> Evidence of activities in your project </a>
                 </li>
               </ul>
@@ -89,12 +89,20 @@
                 <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit"></button>
               </form>
               <div class="login_btn-contanier ml-0 ml-lg-5">
-                <a href="">
+                <a href="../css/style.css">
                   <img src="images/user.png" alt="">
                   <span>
                     Login
                   </span>
                 </a>
+                  <div id> 'open_close'>Login</div>
+                  <form id='login'>
+                      <label>Email:</label>
+                      <imput type='email' id='email' placeholder='Email'/>
+                      <label>Contraseña:</label>
+                      <imput type='password' id='pass' placeholder='Contraseña'/>
+                      <imput type='submit' value='Sign in' id='sign in'/>
+                  </form>
               </div>
             </div>
           </div>
@@ -103,39 +111,45 @@
       </div>
     </header>
     <!-- end header section -->
-    <!-- slider section -->
-    <section class=" slider_section position-relative">
-      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <div class="container">
-              <div class="row">
-                <div class="col-md-4">
-                  <div class="img-box">
-                    <img src="images/digitalizacion.png" alt="">
-                  </div>
+
+  <!-- contact section -->
+  <section class="contact_section layout_padding">
+    <div class="container">
+      <div class="row">
+        <div class="custom_heading-container ">
+          <h2>
+            Project management
+          </h2>
+        </div>
+      </div>
+    </div>
+    <div class="container layout_padding2">
+        <divclass ="form-group" class="row">
+            <div class="col-md-5">
+                <div class="form_contaier">
+                    <form>
+                        <div class="form-group">
+                            <label for="exampleInputName1"> Project name </label>
+                            <input type="text" class="form-control" id="exampleInputName1">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputNumber1"> Number Id. </label>
+                            <input type="text" class="form-control" id="exampleInputNumber1">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputMessage"> Project description </label>
+                            <input type="text" class="form-control" id="exampleInputEmail1">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputMessage"> Description of result </label>
+                            <input type="text" class="form-control" id="exampleInputMessage">
+                        </div>
+                        <button type="submit" class=""> View activity map </button>
+                    </form>
                 </div>
-                <div class="col-md-8">
-                  <div class="detail-box">
-                    <h1>
-                      Welcome To Our <br>
-                    <span>
-                      Dashboard for visualization of activities by nodes
-                     </span>
-                    </h1>
-                    <p>
-                      This is a tool that allows custumers to graphically visualize the status and progress obtained in the penetration tests performed.
-                    </p>
-                    <div>
-                      <a href="">
-                        Buy Now
-                      </a>
-                    </div>
+            </div>
+
 
   <!-- footer section -->
 
