@@ -42,7 +42,7 @@
         <div class="top_contact-container">
           <div class="tel_container">
               <a href="">
-                  <img src="images/proteger.png" alt="">Dashboard 7WS
+                  <img src="images/proteger.png" alt="">Welcome to our Dashboard for visualization of activities by nodes
               </a>
           </div>
           <div class="social-container">
@@ -72,7 +72,7 @@
           </button>
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <div class="d-flex  flex-column flex-lg-row align-items-center w-100 justify-content-between">
+            <div class="d-flex  flex-column flex-lg-row align-items-center w-100 justify-content-center">
               <ul class="navbar-nav  ">
                 <li class="nav-item active">
                   <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
@@ -81,21 +81,9 @@
                   <a class="nav-link" href="projects.html">Projects</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="projectsuser.html"> Evidence of activities in your project </a>
+                    <a class="nav-link" href="projectsuser.html"> Projects management </a>
                 </li>
               </ul>
-              <form class="form-inline ">
-                <input type="search" placeholder="Search">
-                <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit"></button>
-              </form>
-              <div class="login_btn-contanier ml-0 ml-lg-5">
-                <a href="">
-                  <img src="images/user.png" alt="">
-                  <span>
-                    Login
-                  </span>
-                </a>
-              </div>
             </div>
           </div>
 
@@ -105,85 +93,20 @@
     <!-- end header section -->
     <!-- slider section -->
     <section class=" slider_section position-relative">
-      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <div class="container">
-              <div class="row">
-                <div class="col-md-4">
-                  <div class="img-box">
-                    <img src="images/digitalizacion.png" alt="">
-                  </div>
-                </div>
-                <div class="col-md-8">
-                  <div class="detail-box">
-                    <h1>
-                      Welcome To Our <br>
-                    <span>
-                      Dashboard for visualization of activities by nodes
-                     </span>
-                    </h1>
-                    <p>
-                      This is a tool that allows custumers to graphically visualize the status and progress obtained in the penetration tests performed.
-                    </p>
-                    <div>
-                      <a href="">
-                        Buy Now
-                      </a>
-                    </div>
-
-  <!-- footer section -->
-
-  <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-  <script type="text/javascript" src="js/bootstrap.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.min.js">
-  </script>
-  <script type="text/javascript">
-    $(".owl-carousel").owlCarousel({
-      loop: true,
-      margin: 10,
-      nav: true,
-      navText: [],
-      autoplay: true,
-      responsive: {
-        0: {
-          items: 1
-        },
-        600: {
-          items: 2
-        },
-        1000: {
-          items: 4
-        }
-      }
-    });
-  </script>
-  <script type="text/javascript">
-    $(".owl-2").owlCarousel({
-      loop: true,
-      margin: 10,
-      nav: true,
-      navText: [],
-      autoplay: true,
-
-      responsive: {
-        0: {
-          items: 1
-        },
-        600: {
-          items: 2
-        },
-        1000: {
-          items: 4
-        }
-      }
-    });
-  </script>
+        <div class="contenedor__todo">
+            <!--Formulario de Login y registro-->
+            <div class="contenedor__login-register">
+                <!--Login-->
+                <form action="" class="formulario__login">
+                    <h2>Sign in</h2>
+                    <input type="text" placeholder="Email address">
+                    <input type="password" placeholder="Password">
+                    <button>Login</button>
+                </form>
+            </div>
+        </div>
+        <script src="js/script.js"></script>
+    </section>
 </body>
 
 </html>
