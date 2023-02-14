@@ -23,15 +23,15 @@
 
 
   <!-- bootstrap core css -->
-  <link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
+  <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.css" />
 
   <!-- fonts style -->
   <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700|Roboto:400,700&display=swap" rel="stylesheet">
 
   <!-- Custom styles for this template -->
-  <link href="../css/style.css" rel="stylesheet" />
+  <link href="../static/css/style.css" rel="stylesheet" />
   <!-- responsive style -->
-  <link href="../css/responsive.css" rel="stylesheet" />
+  <link href="../static/css/responsive.css" rel="stylesheet" />
 </head>
 
 <body class="sub_page">
@@ -42,18 +42,18 @@
         <div class="top_contact-container">
           <div class="tel_container">
             <a href="">
-              <img src="../images/seguridad.jpg" alt="">Welcome to our Dashboard for visualization of activities by nodes
+              <img src="../static/images/red.png" alt="">Welcome to our Dashboard for visualization of activities by nodes
             </a>
           </div>
           <div class="social-container">
             <a href="">
-              <img src="../images/fb.png" alt="" class="s-1">
+              <img src="../static/images/fb.png" alt="" class="s-1">
             </a>
             <a href="">
-              <img src="../images/twitter.png" alt="" class="s-2">
+              <img src="../static/images/twitter.png" alt="" class="s-2">
             </a>
             <a href="">
-              <img src="../images/instagram.png" alt="" class="s-3">
+              <img src="../static/images/instagram.png" alt="" class="s-3">
             </a>
           </div>
         </div>
@@ -61,7 +61,7 @@
       <div class="container-fluid">
         <nav class="navbar navbar-expand-lg custom_nav-container pt-3">
           <a class="navbar-brand" href="index.html">
-            <img src="../images/red.png" alt="">
+            <img src="../static/images/red.png" alt="">
             <span>
               DB7WS
             </span>
@@ -75,13 +75,13 @@
             <div class="d-flex  flex-column flex-lg-row align-items-center w-100 justify-content-center">
               <ul class="navbar-nav  ">
                 <li class="nav-item active">
-                  <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                  <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="projects.html"> Projects </a>
+                  <a class="nav-link" href="projects"> Projects </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="projectsuser.html"> Projects management </a>
+                  <a class="nav-link" href="projectsuser"> Projects management </a>
                 </li>
               </ul>
             </div>
@@ -97,9 +97,9 @@
       <div class="container">
         <div class="row">
           <div class="custom_heading-container ">
-              <h2>
-                  Project management
-              </h2>
+            <h2>
+              Your's Project
+            </h2>
           </div>
         </div>
       </div>
@@ -114,35 +114,28 @@
                 </div>
                 <div class="form-group">
                   <label for="exampleInputMessage"> Project description </label>
-                  <input type="text" class="form-control"
+                  <input type="text" class="form-control" id="exampleInputEmail1">
                 </div>
-
                 <div class="form-group ">
-                    <label for="inputState"> Name the activity to be performed </label>
-                    <input type="text" class="form-control"
+                  <label for="inputState">Select the test of your interest</label>
+                  <select id="inputState" class="form-control">
+                    <option selected> Vulnerability scanning </option>
+                    <option selected> Security scanning </option>
+                    <option selected> Penetration testing </option>
+                    <option selected> Ethical hacking </option>
+                    <option selected> Posture assessment </option>
+                  </select>
                 </div>
-
                 <div class="form-group">
                   <label for="exampleInputMessage"> Description of result </label>
                   <input type="text" class="form-control" id="exampleInputMessage">
                 </div>
-
                 <button type="submit" class=""> Create project </button>
                 <button type="submit" class=""> Create a connection </button>
                 <button type="submit" class=""> Upload </button>
               </form>
             </div>
           </div>
-         </div>
-       </div>
-
-      <!-- Map to nodes section -->
-    <section>
-        <div class="">
-            <img src="../images/instagram.png" alt="">Aquí va la imagen del mapa de nodos
-        </div>
-    </section>
-
 </body>
 
 </html>

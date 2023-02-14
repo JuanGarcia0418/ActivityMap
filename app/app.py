@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, render_template
 import mysql.connector
 import datetime
 import json
@@ -12,6 +12,18 @@ conexion = mysql.connector.connect(
     password="root",
     database="Activity"
 )
+
+@app.route('/')
+def login():
+    return render_template('index.html')
+
+@app.route('/projects')
+def projects():
+    return render_template('projects.html')
+
+@app.route('/projectsuser')
+def projects_user():
+    return render_template('projectsuser.html')
 
 @app.route('/actividad', methods=['GET'])
 def listar_actividades():

@@ -23,6 +23,24 @@
 
 @media (max-width: 768px) {
 
+    .slider_section .carousel-control-prev,
+    .slider_section .carousel-control-next {
+        display: none;
+    }
+
+    .slider_section .detail-box {
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .discount_section .detail-box {
+        text-align: center;
+    }
+
+    .client_section .client_container {
+        width: 95%;
+    }
+
     .contact_section {
         padding-left: 15px;
         padding-right: 15px;

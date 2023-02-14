@@ -14,16 +14,24 @@
 
   <title>DB7WS</title>
 
+  <!-- slider stylesheet -->
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css" />
+
+  <!-- font awesome style -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
   <!-- bootstrap core css -->
-  <link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
+  <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.css" />
 
   <!-- fonts style -->
   <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700|Roboto:400,700&display=swap" rel="stylesheet">
 
   <!-- Custom styles for this template -->
-  <link href="../css/style.css" rel="stylesheet" />
+  <link href="../static/css/style.css" rel="stylesheet" />
   <!-- responsive style -->
-  <link href="../css/responsive.css" rel="stylesheet" />
+  <link href="../static/css/responsive.css" rel="stylesheet" />
 </head>
 
 <body class="sub_page">
@@ -34,18 +42,18 @@
         <div class="top_contact-container">
           <div class="tel_container">
             <a href="">
-              <img src="../images/seguridad.jpg" alt="">Welcome to our Dashboard for visualization of activities by nodes
+              <img src="../static/images/red.png" alt="">Welcome to our Dashboard for visualization of activities by nodes
             </a>
           </div>
           <div class="social-container">
             <a href="">
-              <img src="../images/fb.png" alt="" class="s-1">
+              <img src="../static/images/fb.png" alt="" class="s-1">
             </a>
             <a href="">
-              <img src="../images/twitter.png" alt="" class="s-2">
+              <img src="../static/images/twitter.png" alt="" class="s-2">
             </a>
             <a href="">
-              <img src="../images/instagram.png" alt="" class="s-3">
+              <img src="../static/images/instagram.png" alt="" class="s-3">
             </a>
           </div>
         </div>
@@ -53,7 +61,7 @@
       <div class="container-fluid">
         <nav class="navbar navbar-expand-lg custom_nav-container pt-3">
           <a class="navbar-brand" href="index.html">
-            <img src="../images/red.png" alt="">
+            <img src="../static/images/red.png" alt="">
             <span>
               DB7WS
             </span>
@@ -67,13 +75,13 @@
             <div class="d-flex  flex-column flex-lg-row align-items-center w-100 justify-content-center">
               <ul class="navbar-nav  ">
                 <li class="nav-item active">
-                  <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                  <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="projects.html"> Projects </a>
+                  <a class="nav-link" href="projects"> Projects </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="projectsuser.html"> Projects management </a>
+                  <a class="nav-link" href="projectsuser"> Projects management </a>
                 </li>
               </ul>
             </div>
@@ -90,30 +98,28 @@
         <div class="row">
           <div class="custom_heading-container ">
             <h2>
-              You'r Projects
+              Project management
             </h2>
           </div>
         </div>
       </div>
       <div class="container layout_padding2">
+        <divclass="form-group" class="row">
+          <div class="col-md-5">
             <div class="form_contaier">
               <form>
                 <div class="form-group">
                   <label for="exampleInputName1"> Project name </label>
                   <input type="text" class="form-control" id="exampleInputName1">
                 </div>
-                <button position-center type="submit" class=""> View activity map </button>
+                <div class="form-group">
+                  <label for="exampleInputMessage"> Description of result </label>
+                  <input type="text" class="form-control" id="exampleInputMessage">
+                </div>
+                <button type="submit" class=""> View activity map </button>
               </form>
             </div>
-      </div>
-    </section>
-
-      <!-- Map to nodes section -->
-    <section>
-        <div class="container">
-            <img src="../images/instagram.png" alt="">Aquí va la imagen del mapa de nodos
-        </div>
-    </section>
+          </div>
 </body>
 
 </html>
