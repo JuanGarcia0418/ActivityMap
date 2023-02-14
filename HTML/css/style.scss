@@ -64,7 +64,7 @@ body {
 
 .custom_heading-container {
   display: flex;
-  justify-content: center;
+  justify-content: "";
 
   h2 {
     text-transform: uppercase;
@@ -86,7 +86,6 @@ body {
 /*header section*/
 .hero_area {
   height: 100vh;
-  background-image: url(../images/hero-bg.jpg);
 }
 
 .sub_page {
@@ -101,7 +100,7 @@ body {
 
 .header_section {
   .top_contact-container {
-    display: flex;
+    display: center;
     justify-content: space-between;
     padding: 5px 0;
 
@@ -186,34 +185,6 @@ a:focus {
   color: #fafcfd;
 }
 
-.custom_nav-container .nav_search-btn {
-  background-image: url(../images/search-icon.png);
-  background-size: 18px;
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 35px;
-  height: 35px;
-  padding: 0;
-  border: none;
-  border-radius: 0;
-}
-
-.login_btn-contanier {
-
-
-  a {
-    text-transform: uppercase;
-    color: $white;
-    display: flex;
-    align-items: center;
-    @include secondary-font();
-
-    img {
-      margin-right: 15px;
-    }
-  }
-}
-
 .navbar-brand {
   display: flex;
   align-items: center;
@@ -269,6 +240,8 @@ a:focus {
 
 /* slider section */
 .slider_section {
+  border-block: medium;
+  initial-letter-align: center;
   height: 100%;
   display: flex;
   align-items: center;
@@ -302,25 +275,6 @@ a:focus {
     }
   }
 
-  #carouselExampleIndicators {
-    width: 100%;
-  }
-
-  .carousel-control-prev,
-  .carousel-control-next {
-    position: absolute;
-    left: 2.5%;
-    width: 45px;
-    height: 45px;
-    border: none;
-    border-radius: 100%;
-    opacity: 1;
-    background-repeat: no-repeat;
-    background-size: 12px;
-    background-position: center;
-    background-color: #2c2c2c;
-    transform: translateY(-50%)translatex(0);
-
     &:hover {
       background-color: $white;
       width: 55px;
@@ -329,45 +283,6 @@ a:focus {
     }
   }
 
-
-
-  .carousel-control-prev {
-    top: 47%;
-    background-image: url(../images/left-arrow.png);
-
-    &:hover {
-      background-image: url(../images/left-arrow-blue.png);
-    }
-  }
-
-  .carousel-control-next {
-    top: 62%;
-    background-image: url(../images/right-arrow.png);
-
-    &:hover {
-      background-image: url(../images/right-arrow-blue.png);
-    }
-  }
-
-
-  .carousel-indicators {
-    bottom: -75px;
-
-    li {
-      margin: 0;
-      height: 1px;
-      opacity: 1;
-      width: 40px;
-
-      &.active {
-        height: 5px;
-        margin-top: -2px;
-        width: 45px;
-      }
-    }
-  }
-
-}
 
 // end slider section
 
@@ -470,15 +385,6 @@ a:focus {
 
 // health section
 .health_section {
-  .health_carousel-container {
-    width: 90%;
-    margin: 0 auto;
-  }
-
-  a {
-    @include hero_btn(#2c2c2c, $white, 10px, 45px);
-    margin-top: 30px;
-  }
 
   .box {
     display: flex;
@@ -541,19 +447,6 @@ a:focus {
     }
   }
 
-  .owl-carousel .owl-nav.disabled {
-    display: block;
-
-    &>div {
-      position: absolute;
-      top: -65px;
-      background-color: #2c2c2c;
-      width: 50px;
-      height: 50px;
-      background-size: 10px;
-      background-position: center;
-      background-repeat: no-repeat;
-
       &:hover {
         background-color: $primary;
       }
@@ -607,90 +500,10 @@ a:focus {
 
 // end about section
 
-// client section
-.client_section {
-  .client_container {
-    width: 550px;
-    margin: 0 auto;
-    text-align: center;
-
-    .client_detail {
-      border: 1px solid $black;
-      padding: 25px 20px;
-
-      p {
-        margin: 0;
-      }
-    }
-
-    .client_box {
-      margin-top: 35px;
-
-      .name {
-        margin-top: 25px;
-
-        h5 {
-          text-transform: uppercase;
-        }
-
-        h6 {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          color: #2deaf5;
-
-          img {
-            margin-top: 5px;
-          }
-        }
-      }
-    }
-  }
-
-  .carousel-indicators {
-    align-items: center;
-    bottom: -25px;
-
-    li {
-      margin: 3px;
-      width: 20px;
-      height: 20px;
-      opacity: 1;
-      background-color: $primary;
-      border-radius: 100%;
-      position: relative;
-
-      &::before {
-        content: "";
-        width: 35%;
-        height: 35%;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background-color: $white;
-        border-radius: 100%;
-      }
-
-      &.active {
-        background-color: #161616;
-        width: 15px;
-        height: 15px;
-
-        &::before {
-          display: none;
-        }
-      }
-    }
-  }
-}
-
-// end client section
-
 // contact section
 .contact_section {
   .custom_heading-container {
-    justify-content: start;
+    justify-content: center;
 
     h2 {
       &::after {
@@ -807,7 +620,6 @@ a:focus {
 }
 
 body {
-  background-image: url(../images/bg4.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
