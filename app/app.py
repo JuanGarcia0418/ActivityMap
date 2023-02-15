@@ -37,6 +37,11 @@ def login():
     else:
         return render_template('index.html')
 
+@app.route('/logout')
+def logout():
+    logout_user()
+    return redirect(url_for('login'))
+
 
 @app.route('/projects')
 def projects():
