@@ -1,6 +1,5 @@
 from database import Base
-from datetime import datetime
-from sqlalchemy import Column, String, Integer, Text, DateTime, text
+from sqlalchemy import Column, String, Integer, CHAR
 
 """
 Class Activity:
@@ -13,19 +12,14 @@ Class Activity:
     ImageId: int
 
 """
-time = "%Y-%m-%dT%H:%M:%S.%f"
 
-class Activity(Base):
-    __tablename__='Activity'
-    activity_id = Column(Integer,primary_key=True, nullable=False)
-    name = Column(String(16), index=True, nullable=False)
-    created_at = Column(DateTime, default=datetime.utcnow)
-    description = Column(Text(60), nullable=False)
-    evidence = Column(String(32), nullable=False)
-    projectid = Column(Integer, nullable=False)
-    userid = Column(Integer, nullable=False)
-    imageid = Column(String(60), nullable=False)
+class Flask_login(Base):
+    __tablename__='user'
+    id = Column(Integer,primary_key=True, nullable=False)
+    username = Column(String(20), nullable=False)
+    password = Column(CHAR(102), nullable=False)
+    fullname = Column(String(50), nullable=False)
 
 
     def __repr__(self):
-        return f"<Activity {self.Name}>"
+        return f"<Flask_login {self.Name}>"
