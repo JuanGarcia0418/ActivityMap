@@ -79,14 +79,14 @@
       </div>
     </header>
     <!-- end header section -->
-
+  
     <!-- contact section -->
     <section class="contact_section layout_padding">
       <div class="container">
         <div class="row">
           <div class="custom_heading-container ">
             <h2>
-              Your's Project
+              Manage your projects
             </h2>
           </div>
         </div>
@@ -96,17 +96,23 @@
           <div class="col-md-5">
             <div class="form_contaier">
               <form>
-                <div class="form-group">
-                  <label for="exampleInputName1"> Project name </label>
-                  <input type="text" class="form-control" id="exampleInputName1">
+                <div>
+                  <div class="form-group ">
+                    <label for="inputState">Choose the project to work on</label>
+                     <select id="inputState" class="form-control">
+                      <option selected>Proyect 1</option>
+                      <option selected>Project 2</option>
+                      <option selected>Project 3</option>
+                     </select>
+                  </div>
                 </div>
                 <div class="form-group">
                   <label for="exampleInputMessage"> Project description </label>
                   <input type="text" class="form-control" id="exampleInputMessage">
                 </div>
                 <div class="form-group ">
-                  <label for="exampleInputMessage"> Name of the activity to be performed </label>
-                  <input type="text" class="form-control" id="exampleInputMessage">
+                  <label for="exampleInputName1"> Name of the activity to be performed </label>
+                  <input type="text" class="form-control" id="exampleInputName1">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputMessage"> Description of result </label>
@@ -118,14 +124,19 @@
               </form>
             </div>
           </div>
-          </section>
-
-      <!-- Map to nodes section -->
-    <section>
-        <div class="container">
-            <img src="../static/images/instagram.png" alt="">Aquí va la imagen del mapa de nodos
+              <!-- Map to nodes section -->
+        <div class="col-md-7">
+          <div class="form group">
+           <img src="../static/images/red.png" alt="">Aquí va la imagen del mapa de nodos
+          </div>
         </div>
-    </section>
+      </div>
+        </div>
+          </section>
+      <!-- end Map to nodes section -->
+
+          <!-- end contact section -->
+
           
      <script src="../static/js/script.js"></script>
 </body>

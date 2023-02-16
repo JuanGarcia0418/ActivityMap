@@ -41,9 +41,9 @@
       <div class="container">
         <div class="top_contact-container">
           <div class="tel_container">
-            <a href="">
-              <img src="../static/images/seguridad.jpg" alt="">Welcome to our Dashboard for visualization of activities by nodes
-            </a>
+              <a href="">
+                  <img src="../static/images/seguridad.jpg" alt="">Your Projects
+              </a>
           </div>
           <div class="social-container">
             <a href="">
@@ -79,40 +79,46 @@
       </div>
     </header>
     <!-- end header section -->
-
     <!-- contact section -->
-    <section class="contact_section layout_padding">
-      <div class="container">
-        <div class="row">
-          <div class="custom_heading-container ">
-            <h2>
-              You'r Projects
-            </h2>
-          </div>
+   <section class="contact_section layout_padding">
+    <div class="container">
+      <div class="row">
+        <div class="custom_heading-container ">
+          <h2>
+            Your node maps
+          </h2>
         </div>
       </div>
-      <div class="container layout_padding2">
-        <divclass="form-group" class="row">
+    <section class="contact_section">
+      <div class="container">
           <div class="col-md-5">
             <div class="form_contaier">
               <form>
-                <div class="form-group">
-                  <label for="exampleInputName1"> Project name </label>
-                  <input type="text" class="form-control" id="exampleInputName1">
+                <div>
+                  <div class="form-group ">
+                   <label for="inputState"><h3>Choose your project</h3></label>
+                   <select id="inputState" class="form-control">
+                    <option selected>Activity 1</option>
+                    <option selected>Activity 2</option>
+                    <option selected>Activity 3</option>
+                   </select>
+                  </div>
                 </div>
                 <button type="submit" class=""> View activity map </button>
               </form>
             </div>
           </div>
-           </section>
+      </div>
+    </section>
+    <!-- end contact section -->
 
       <!-- Map to nodes section -->
-    <section>
-        <div class="container">
-            <img src="../static/images/instagram.png" alt="">Aquí va la imagen del mapa de nodos
+    <section class="containernodes">
+        <div>
+           <img id="nodemaps" src="../static/images/red.png" alt="">
         </div>
-    </section>
-          
+</section>
+     <!-- Map to nodes section -->     
      <script src="../static/js/script.js"></script>
 </body>
 
