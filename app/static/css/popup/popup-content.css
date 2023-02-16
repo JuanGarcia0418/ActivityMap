@@ -1,0 +1,23 @@
+.popup-content h2 {
+  color: #00bfff;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.popup-content p {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.popup-content {
+  display: block;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.popup-content span {
+  font-weight: bold;
+}
