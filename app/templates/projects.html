@@ -26,7 +26,8 @@
   <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.css" />
 
   <!-- fonts style -->
-  <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700|Roboto:400,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700%7CRoboto:400,700&display=swap"
+    rel="stylesheet">
 
   <!-- Custom styles for this template -->
   <link href="../static/css/style.css" rel="stylesheet" />
@@ -41,9 +42,9 @@
       <div class="container">
         <div class="top_contact-container">
           <div class="tel_container">
-              <a href="">
-                  <img src="../static/images/seguridad.jpg" alt="">Your Projects
-              </a>
+            <a href="">
+              <img src="../static/images/seguridad.jpg" alt="">Your Projects
+            </a>
           </div>
           <div class="social-container">
             <a href="">
@@ -68,58 +69,58 @@
           </a>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <div class="d-flex  flex-column flex-lg-row align-items-center w-100 justify-content-center">
-              <ul class="navbar-nav  ">
-            <div>
               <h3>{{ current_user.fullname }}</h3>
             </div>
-            </div>
-            <a href="{{ url_for('logout') }}">Log out</a>
+            <a href="{{ url_for('logout') }}">Logout</a>
           </div>
         </nav>
       </div>
     </header>
     <!-- end header section -->
     <!-- contact section -->
-   <section class="contact_section layout_padding">
-    <div class="container">
-      <div class="row">
-        <div class="custom_heading-container ">
-          <h2>
-            Your node maps
-          </h2>
-        </div>
-      </div>
-    <section class="contact_section">
+    <section class="contact_section layout_padding">
       <div class="container">
-          <div class="col-md-5">
-            <div class="form_contaier">
-              <form>
-                <div>
-                  <div class="form-group ">
-                   <label for="inputState"><h3>Choose your project</h3></label>
-                   <select id="inputState" class="form-control">
-                    <option selected>Activity 1</option>
-                    <option selected>Activity 2</option>
-                    <option selected>Activity 3</option>
-                   </select>
+        <div class="row">
+          <div class="custom_heading-container ">
+            <h2>
+              Your node maps
+            </h2>
+          </div>
+        </div>
+        <section class="contact_section">
+          <div class="row">
+            <div class="col-md-5">
+              <div class="form_contaier">
+                <form>
+                  <div>
+                    <div class="form-group ">
+                      <h3>Choose your project</h3>
+                      <select id="inputState" class="form-control">
+                        <option selected>Activity 1</option>
+                        <option selected>Activity 2</option>
+                        <option selected>Activity 3</option>
+                      </select>
+                    </div>
                   </div>
-                </div>
-                <button type="submit" class=""> View activity map </button>
-              </form>
+                  <button type="submit" class=""> View activity map </button>
+                </form>
+              </div>
             </div>
           </div>
+        </section>
+        <!-- end contact section -->
+        <!-- Map to nodes section -->
+        <section class="containernodes">
+          <div>
+            <img id="nodemaps" src="../static/images/red.png" alt="">
+          </div>
+        </section>
+
       </div>
     </section>
-    <!-- end contact section -->
-
-      <!-- Map to nodes section -->
-    <section class="containernodes">
-        <div>
-           <img id="nodemaps" src="../static/images/red.png" alt="">
-        </div>
-</section>
-     <!-- Map to nodes section -->     
-     <script src="../static/js/script.js"></script>
+  </div>
+  <!-- Map to nodes section -->
+  <script src="../static/js/script.js"></script>
 </body>
 
 </html>
