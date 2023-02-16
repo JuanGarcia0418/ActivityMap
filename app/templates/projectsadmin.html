@@ -42,7 +42,7 @@
         <div class="top_contact-container">
           <div class="tel_container">
             <a href="">
-              <img src="../static/images/red.png" alt="">Welcome to our Dashboard for visualization of activities by nodes
+              <img src="../static/images/seguridad.jpg" alt="">Welcome to our Dashboard for visualization of activities by nodes
             </a>
           </div>
           <div class="social-container">
@@ -66,24 +66,15 @@
               DB7WS
             </span>
           </a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <div class="d-flex  flex-column flex-lg-row align-items-center w-100 justify-content-center">
               <ul class="navbar-nav  ">
-                <li class="nav-item active">
-                  <a class="nav-link" href="login">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="projects"> Projects </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="projectsuser"> Projects management </a>
-                </li>
-              </ul>
+            <div>
+              <h3>{{ current_user.fullname }}</h3>
+            </div>
+            </div>
+            <a href="{{ url_for('logout') }}">Log out</a>
+          </div>
             </div>
           </div>
 
