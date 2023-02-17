@@ -1043,6 +1043,15 @@ button[type="button"], button[type="submit"] {
   }
 }
 
+.button-input {
+  display: inline-block;
+  padding: 10px 50px;
+  background-color: #121313;
+  border: 1px solid #121313;
+  color: #ffffff;
+  border-radius: 5px;
+  margin-top: 15px;
+}
 </style >
 
 /*# sourceMappingURL=style.css.map */

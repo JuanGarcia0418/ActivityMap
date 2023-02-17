@@ -45,11 +45,11 @@ def logout():
 
 @app.route('/projects')
 def projects():
-    return render_template('projects.html')
+    return render_template('projectsUser.html')
 
-@app.route('/projectsuser')
+@app.route('/managementAct')
 def projects_user():
-    return render_template('projectsuser.html')
+    return render_template('managementActivity.html')
 
 def pagina_no_encontrada(error):
     return "<h1>La pagina no existe</h1>", 404
