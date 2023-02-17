@@ -4,7 +4,6 @@ from flask_login import LoginManager, login_user, logout_user, login_required
 from config import config
 from models.ModelUser import ModelUser
 from models.entities.User import User
-from models.entities.Project import Proyects
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:root@localhost/DB7WS'
