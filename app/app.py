@@ -50,9 +50,8 @@ def projects_user():
     if request.method == 'POST':
         activityname = request.form['node']
         resultactivity = request.form['result']
-        user = User.query.filter_by(id=id).first()
         cur = db.connection.cursor()
-        cur.execute("INSERT INTO Projects(activityname, resultactivity, user_id) VALUES (%s, %s, %i)", (activityname, resultactivity, user))
+        cur.execute("INSERT INTO Projects(activityname, resultactivity) VALUES (%s, %s)", (activityname, resultactivity))
         db.connection.commit()
         cur.close()
     return render_template('managementActivity.html')
