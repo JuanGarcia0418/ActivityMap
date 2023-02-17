@@ -4,8 +4,10 @@ from flask_login import LoginManager, login_user, logout_user, login_required
 from config import config
 from models.ModelUser import ModelUser
 from models.entities.User import User
+from models.entities.Project import Proyects
 
 app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:root@localhost/DB7WS'
 
 db = MySQL(app)
 login_manager_app = LoginManager(app)
@@ -27,7 +29,7 @@ def login():
         if logged_user != None:
             if logged_user.password:
                 login_user(logged_user)
-                return redirect(url_for('projects'))
+                return redirect(url_for('projects_user'))
             else:
                 flash("Contraseña invalida")
                 return render_template('index.html')
@@ -43,13 +45,21 @@ def logout():
     return redirect(url_for('login'))
 
 
+@app.route('/managementAct',  methods=['GET', 'POST'])
+def projects_user():
+    if request.method == 'POST':
+        activityname = request.form['node']
+        resultactivity = request.form['result']
+        user = User.query.filter_by(id=id).first()
+        cur = db.connection.cursor()
+        cur.execute("INSERT INTO Projects(activityname, resultactivity, user_id) VALUES (%s, %s, %i)", (activityname, resultactivity, user))
+        db.connection.commit()
+        cur.close()
+    return render_template('managementActivity.html')
+
 @app.route('/projects')
 def projects():
     return render_template('projectsUser.html')
-
-@app.route('/managementAct')
-def projects_user():
-    return render_template('managementActivity.html')
 
 def pagina_no_encontrada(error):
     return "<h1>La pagina no existe</h1>", 404
