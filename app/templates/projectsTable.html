@@ -92,21 +92,66 @@
         <section class="contact_section layout_padding">
             <div class="container">
                 <div class="row">
-                        <h2 id="table">
-                            Projects management
-                        </h2>
+                    <h2 id="table">
+                        Projects management
+                    </h2>
                 </div>
             </div>
-            <script>$(document).ready(function () {
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script>
+                $(document).ready(function () {
                     $("#add-row").click(function () {
-                        var html = '<tr><td><input type="text" name="nombre[]"></td><td><input type="text" name="apellido[]"></td></tr>';
+                        var html = '<tr>' +
+                            '<td><input type="text" name="ProjectName[]"></td>' +
+                            '<td><input type="text" name="ProjectCompany[]"></td>' +
+                            '<td><input type="date" name="Date[]"></td>' +
+                            '<td><input type="text" name="Requiremnets[]"></td>' +
+                            '<td><input type="text" name="Tester assigned[]"></td>' +
+                            '<td><a href="{{ url_for(\'realizar_tarea\', proyecto_id=proyecto.id) }}" class="btn btn-primary">Create node map</a></td>' +
+                            '</tr>';
                         $("#tabla-datos").append(html);
                     });
 
                     $("#remove-row").click(function () {
                         $("#tabla-datos tr:last").remove();
                     });
-                });</script>
+
+    // Función para mostrar ventana emergente
+                    function showSuccessMessage() {
+        // Crear un elemento de ventana emergente con el mensaje deseado
+                        var modal = $("<div>").addClass("modal");
+                        var message = $("<p>").text("Project saved successfully!");
+                        var closeButton = $("<button>").text("Close");
+
+        // Agregar elementos a la ventana emergente
+                        modal.append(message);
+                        modal.append(closeButton);
+
+        // Agregar ventana emergente al cuerpo del documento
+                        $("body").append(modal);
+
+        // Cerrar ventana emergente al hacer clic en el botón de cerrar
+                        closeButton.click(function () {
+                            modal.remove();
+                        });
+                    }
+
+                    $("#table").submit(function (event) {
+                        event.preventDefault();
+                        $.ajax({
+                            url: "{{ url_for('guardar_datos') }}",
+                            type: "POST",
+                            data: $("#table").serialize(),
+                            success: function () {
+                                // Mostrar ventana emergente de éxito
+
+                                showSuccessMessage();
+                            }
+                        });
+                    });
+                });
+            </script>
+
             <form id=table method="POST" action="{{ url_for('guardar_datos') }}" aling="center">
                 <table id="tabla-datos">
                     <tr>
@@ -122,6 +167,7 @@
                         <td><input type="date" name="Date[]"></td>
                         <td><input type="text" name="Requiremnets[]"></td>
                         <td><input type="text" name="Tester assigned[]"></td>
+                        <td><a href="{{ url_for('realizar_tarea', proyecto_id=proyecto.id) }}" class="btn btn-primary">Create node map</a></td>
                     </tr>
                 </table>
                 <button type="button" id="add-row"> Add project </button>
@@ -133,7 +179,6 @@
     <!-- end proyect section -->
 
     <script src="../static/js/script.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </body>
 
 </html>
