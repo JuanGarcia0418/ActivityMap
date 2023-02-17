@@ -92,11 +92,9 @@
         <section class="contact_section layout_padding">
             <div class="container">
                 <div class="row">
-                    <div class="custom_heading-container ">
-                        <h2>
+                        <h2 id="table">
                             Projects management
                         </h2>
-                    </div>
                 </div>
             </div>
             <script>$(document).ready(function () {
@@ -109,7 +107,7 @@
                         $("#tabla-datos tr:last").remove();
                     });
                 });</script>
-            <form method="POST" action="{{ url_for('guardar_datos') }}" aling="center">
+            <form id=table method="POST" action="{{ url_for('guardar_datos') }}" aling="center">
                 <table id="tabla-datos">
                     <tr>
                         <th> Project name </th>
@@ -127,7 +125,7 @@
                     </tr>
                 </table>
                 <button type="button" id="add-row"> Add project </button>
-                <button type="button" id="remove-row"> Add project </button>
+                <button type="button" id="remove-row"> Remove last project </button>
                 <button type="submit"> Save project </button>
             </form>
         </section>
