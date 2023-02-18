@@ -10,7 +10,7 @@ mydb = mysql.connector.connect(
 cursorInsert = mydb.cursor()
 
 
-consulta = "INSERT INTO User(username, password, fullname) VALUES ('Admin', 'pbkdf2:sha256:260000$XGxePWC6QrcswbeY$61e59403515d39ca72e944ec1da6366eecb3bea50d3a511d6af30695570f5471', 'Juan Andres Garcia');"
+consulta = "INSERT INTO user(username, password, fullname, user_type) VALUES ('Admin', 'admin', 'Juan Garcia', 'admin');"
 
 cursorInsert.execute(consulta)
 

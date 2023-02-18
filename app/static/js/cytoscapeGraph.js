@@ -2,10 +2,10 @@ function Graph() {
   const containerRef = React.useRef(null);
   const [elements, setElements] = React.useState(null);
   const [selectedNode, setSelectedNode] = React.useState(null);
-
-  // // extract information from API
+  const URL_DATANODES = 'http://127.0.0.1:5000/graph-data';
+  // // extract information from API  
   React.useEffect(() => {
-    fetch('http://localhost:8000/graphdata')
+    fetch(URL_DATANODES)
       .then(response => response.json())
       .then(elements => setElements(elements));
   }, []);
@@ -19,8 +19,8 @@ function Graph() {
         selector: 'node',
         style: {
           'background-color': '#73c7f5',
-          'width': 150,
-          'height': 150,
+          'width': 250,
+          'height': 250,
           'border-color': '#000',
           'border-width': 5,
           'border-opacity': .9,
@@ -50,6 +50,7 @@ function Graph() {
         transform: function (node, position) { return position; }
       }
     });
+    // cy.nodes('[name]').style('label', 'data(name)');
 
     // // Set listenesr for diferents action
     cy.on("mouseover", "node", function (event) {
@@ -86,13 +87,11 @@ function Popup({ node, onClose }) {
   return (
     React.createElement("div", { className: "popup" },
       React.createElement("div", { className: "popup-content" },
-        React.createElement("h2", null, "Test Information"),
+        React.createElement("h2", null, node.name),
         React.createElement("div", { className: "node-info" },
           React.createElement("p", null,
             React.createElement("span", null, node.name),
-            React.createElement("br", null),
-            node.date
-          ),
+            React.createElement("br", null), node.date),
           React.createElement("p", null,
             React.createElement("span", null, "Test result"),
             React.createElement("br", null),
