@@ -945,8 +945,6 @@ main {
 
 /* proyect section*/
 
-<style >
-
 h2. table {
   text-align: center;
   margin-top: 20px;
@@ -1007,7 +1005,22 @@ button[type="button"]:hover, button[type="submit"]:hover {
   }
 }
 
-</style >
+/*logout button*/
+.logout-btn {
+  background-color: #454747;
+  color: #E0FBFB;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
 
+.logout-btn:hover {
+  background-color: #CFD3D3;
+}
+/*end logout button*/
 
 // end proyect section
