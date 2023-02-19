@@ -77,7 +77,15 @@ def view():
 @app.route('/form_project')
 # form for create and see a projects
 def form_projects():
-    return render_template('projectsTable.html')
+    # get the loged user_id
+    user_id = session.get('user_id')
+    # create query for show data
+    cursor = mydb.cursor()
+    projects_query = 'SELECT * FROM projects WHERE user_id = %s'
+    cursor.execute(projects_query, (user_id,))
+    project = cursor.fetchall()
+    # render table
+    return render_template('projectsTable.html', projects=project)
 
 
 @app.route('/form_activity')
@@ -91,8 +99,8 @@ def create_projects():
     if request.method == 'POST':
         # get information from the form
         id = uuid.uuid4()
-        name = request.form['projectName']
-        company_name = request.form['nameCompany']
+        name = request.form['name']
+        company_name = request.form['company_name']
         date = request.form['date']
         requirements = request.form['requirements']
         user_id = session['user_id']

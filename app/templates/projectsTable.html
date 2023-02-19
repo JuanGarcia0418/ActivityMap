@@ -97,27 +97,50 @@
                     </h2>
                 </div>
             </div>
-
             <form id=table method="POST" action="/create_project" aling="center">
                 <table id="tabla-datos">
                     <tr>
                         <th> Project name </th>
-                        <th> Project Company </th>
+                        <th> Company name </th>
                         <th> Date </th>
-                        <th> Requirements </th>
+                        <th> Description project </th>
                     </tr>
                     <tr>
-                        <td><input type="text" name="projectName" id="name"></td>
-                        <td><input type="text" name="nameCompany" id="company_name"></td>
+                        <td><input type="text" name="name" id="name"></td>
+                        <td><input type="text" name="company_name" id="company_name"></td>
                         <td><input type="date" name="date" id="date"></td>
                         <td><input type="text" name="requirements" id="requiremnts"></td>
                     </tr>
                 </table>
                 <div class="button-container">
                     <input type="submit" id="add-row" value="Add project" class="button">
-                    <button type="button" id="remove-row" class="button"> Remove last project </button>
+                    <!-- <button type="button" id="remove-row" class="button"> Remove last project </button> -->
                 </div>
+                <br>
             </form>
+            <!-- table for show all projects -->
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Company</th>
+                        <th>Description</th>
+                        <th>Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for project in projects %}
+                    <tr>
+                        <td>{{ project[1] }}</td>
+                        <td>{{ project[4] }}</td>
+                        <td>{{ project[3] }}</td>
+                        <td>{{ project[2] }}</td>
+                        <td><a href="/projects/{{ project.id }}/activities">Create activities</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
         </section>
     </div>
     <!-- end proyect section -->
