@@ -101,7 +101,7 @@ def projects_user():
     return render_template('projectsTable.html')
 
 
-@app.route('/create_activity_nodes', methods=['POST', 'GET'])
+@app.route('/create_activity_graph', methods=['POST', 'GET'])
 def create_node():
     if request.method == 'POST':
         # get information from the form
