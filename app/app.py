@@ -1,4 +1,4 @@
-from flask import Flask, redirect, request, render_template, url_for, session, abort
+from flask import Flask, redirect, request, render_template, url_for, session, abort, jsonify
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
 import mysql.connector
 from flask_cors import CORS
@@ -68,20 +68,25 @@ def logout():
 # function for visualization for different user
 def view():
     if current_user.user_type == 'admin':
-        return redirect(url_for('create_node'))
+        return redirect(url_for('create_activities'))
     else:
         return render_template('view.html')
 
 
-@app.route('/form')
+@app.route('/form_project')
 # form for create and see a projects
-def form():
+def form_projects():
     return render_template('projectsTable.html')
 
 
-@app.route('/table',  methods=['GET', 'POST'])
-# render information for input to Database
-def projects_user():
+@app.route('/form_activity')
+def form_activities():
+    return render_template('managementActivity.html')
+
+
+@app.route('/create_project',  methods=['GET', 'POST'])
+# render information for input to projects table
+def create_projects():
     if request.method == 'POST':
         # get information from the form
         name = request.form['projectName']
@@ -98,11 +103,12 @@ def projects_user():
         # close cursor
         cursor.close()
         # render
-    return render_template('projectsTable.html')
+    return redirect(url_for('form_projects'))
 
 
-@app.route('/create_activity_graph', methods=['POST', 'GET'])
-def create_node():
+@app.route('/create_activity', methods=['POST', 'GET'])
+# render information for input to activities table
+def create_activities():
     if request.method == 'POST':
         # get information from the form
         name = request.form['name']
@@ -119,7 +125,36 @@ def create_node():
         # close cursor
         cursor.close()
         # redirect the user to a form page
-    return render_template('managementActivity.html')
+    return redirect(url_for('form_activities'))
+
+
+@app.route('/get_activities')
+# generate JSON response about the activites and relations
+def get_activities():
+    # get the loged user_id
+    user_id = session.get('user_id')
+    # crete cursor for excute query
+    cursor = mydb.cursor()
+    # create query for get activities data
+    nodes_query = 'SELECT * FROM activities WHERE user_id = %s'
+    cursor.execute(nodes_query, (user_id,))
+    nodes_data = cursor.fetchall()
+    # create query for get relations data
+    # edges_query = 'SELECT * FROM relations WHERE user_id = %s'
+    # cursor.execute(edges_query, (user_id,))
+    # edges_data = cursor.fetchall()
+    # close cursor
+    cursor.close()
+    # generate JSON with the all data
+    graph_data = {
+        "nodes": [{"data": {"name": node[0], "date": node[1], "description": node[2]}}
+                  for node in nodes_data
+                  ]
+        # "edges": [{"data": {"id": edge[0], "source": edge[1], "target": edge[2]}}
+        #           for edge in edges_data]
+    }
+
+    return jsonify(graph_data)
 
 
 def pagina_no_encontrada(error):
