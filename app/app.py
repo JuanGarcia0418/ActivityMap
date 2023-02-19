@@ -1,5 +1,6 @@
 from flask import Flask, redirect, request, render_template, url_for, session, abort, jsonify
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
+import uuid
 import mysql.connector
 from flask_cors import CORS
 from models.User import User
@@ -26,7 +27,7 @@ login_manager.init_app(app)
 @login_manager.user_loader
 # login management
 def load_user(user_id):
-    return User.query.get(int(user_id))
+    return User.query.get(str(user_id))
 
 
 @app.route('/')
@@ -68,7 +69,7 @@ def logout():
 # function for visualization for different user
 def view():
     if current_user.user_type == 'admin':
-        return redirect(url_for('create_activities'))
+        return redirect(url_for('create_projects'))
     else:
         return render_template('view.html')
 
@@ -89,6 +90,7 @@ def form_activities():
 def create_projects():
     if request.method == 'POST':
         # get information from the form
+        id = uuid.uuid4()
         name = request.form['projectName']
         company_name = request.form['nameCompany']
         date = request.form['date']
@@ -96,8 +98,8 @@ def create_projects():
         user_id = session['user_id']
         # create query for insert data
         cursor = mydb.cursor()
-        project_query = "INSERT INTO projects(name, date, description, user_id, company_name) VALUES (%s, %s, %s, %s, %s)"
-        values = (name, date, requirements, user_id, company_name)
+        project_query = "INSERT INTO projects(id, name, date, description, user_id, company_name) VALUES (%s,%s, %s, %s, %s, %s)"
+        values = (str(id), name, date, requirements, user_id, company_name)
         cursor.execute(project_query, values)
         mydb.commit()
         # close cursor
@@ -111,6 +113,7 @@ def create_projects():
 def create_activities():
     if request.method == 'POST':
         # get information from the form
+        id = uuid.uuid4()
         name = request.form['name']
         date = request.form['date']
         description = request.form['description']
@@ -118,8 +121,8 @@ def create_activities():
         # create cursor for execute query
         cursor = mydb.cursor()
         # consult for create a new node
-        node_query = "INSERT INTO activities(name, date, description, user_id) VALUES (%s, %s, %s, %s)"
-        values = (name, date, description, user_id)
+        node_query = "INSERT INTO activities(id, name, date, description, user_id) VALUES (%s,%s, %s, %s, %s)"
+        values = (str(id) ,name, date, description, user_id)
         cursor.execute(node_query, values)
         mydb.commit()
         # close cursor
@@ -147,7 +150,7 @@ def get_activities():
     cursor.close()
     # generate JSON with the all data
     graph_data = {
-        "nodes": [{"data": {"name": node[0], "date": node[1], "description": node[2]}}
+        "nodes": [{"data": {"name": node[1], "date": node[2], "description": node[3]}}
                   for node in nodes_data
                   ]
         # "edges": [{"data": {"id": edge[0], "source": edge[1], "target": edge[2]}}

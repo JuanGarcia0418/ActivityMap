@@ -1,5 +1,7 @@
 import mysql.connector
+import uuid
 
+# Establecer conexión con la base de datos
 mydb = mysql.connector.connect(
     host="localhost",
     user="root",
@@ -7,12 +9,21 @@ mydb = mysql.connector.connect(
     database="DB7WS"
 )
 
-cursorInsert = mydb.cursor()
 
+# Crear cursor
+cursor = mydb.cursor()
 
-consulta = "INSERT INTO user(username, password, fullname, user_type) VALUES ('Admin', 'admin', 'Juan Garcia', 'admin');"
+# Generar UUID
+id = uuid.uuid4()
 
-cursorInsert.execute(consulta)
+# Insertar datos con UUID
+consulta = "INSERT INTO user(id, username, password, fullname, user_type) VALUES (%s,%s,%s,%s,%s)"
+values = (str(id),'Admin', 'admin', 'Juan Garcia', 'admin')
+cursor.execute(consulta, values)
 
+# Hacer commit y cerrar conexión
 mydb.commit()
-cursorInsert.close()
+mydb.close()
+
+
+
