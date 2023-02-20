@@ -907,7 +907,7 @@ main {
   width: 100%;
   background: #24303c;
   padding: 10px;
-  border-radius: 4px;
+  border-radius: 50px;
   margin-bottom: 16px;
   border: 1px solid #1f53c5;
   font-family: 'calibri';
@@ -932,15 +932,6 @@ main {
   text-decoration: underline;
 }
 
-.form-register .botons {
-  width: 100%;
-  background: #1f53c5;
-  border: none;
-  padding: 12px;
-  color: white;
-  margin: 16px 0;
-  font-size: 16px;
-}
 // end form register
 
 /* proyect section*/
@@ -979,7 +970,7 @@ input[type="text"] {
   width: 100%;
   padding: 8px;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 50px;
   box-sizing: border-box;
   margin-top: 6px;
   margin-bottom: 16px;
@@ -1016,8 +1007,30 @@ input[type="text"] {
   color: #FFFFFF;
 }
 
+.button-container .my-button {
+  font-family: Roboto;
+  font-weight: bold;
+  border: 1px solid black;
+  background-color: #7CC7F5;
+  color: #363737;
+  padding: -15px;
+  border-radius: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button-container .my-button:hover {
+  background-color: #B8BCBD;
+  color: #FFFFFF;
+}
+
 /*logout button*/
-.logout-btn {
+.btn.logout-btn {
   background-color: #454747;
   color: #E0FBFB;
   border: none;
@@ -1029,7 +1042,7 @@ input[type="text"] {
   transition: background-color 0.3s ease-in-out;
 }
 
-.logout-btn:hover {
+.btn.logout-btn:hover {
   background-color: #CFD3D3;
 }
 /*end logout button*/
