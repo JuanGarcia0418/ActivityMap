@@ -116,31 +116,49 @@ def create_projects():
     return redirect(url_for('form_projects'))
 
 
-# @app.route('/delete_project/<project_id>', methods=['POST'])
-# def delete_project(project_id):
-#     cursor = mydb.cursor()
-#     delete_query = "DELETE FROM projects WHERE id = %s"
-#     cursor.execute(delete_query, (project_id,))
-#     mydb.commit()
-#     cursor.close()
-#     return redirect(url_for('form_projects'))
+@app.route('/delete_project/', methods=['POST'])
+def delete_project():
+    if request.method == 'POST':
+        # get information fron the form
+        project_id = request.form['project_id']
+        # create query for insert data
+        cursor = mydb.cursor()
+        delete_query = "DELETE FROM projects WHERE id = %s"
+        cursor.execute(delete_query, (project_id,))
+        mydb.commit()
+        cursor.close()
+    # rediret after delte project
+    return redirect(url_for('form_projects'))
 
 
-@app.route('/create_activity', methods=['POST', 'GET'])
+# @app.route('/add_activity')
+# # asigne project for one activity
+# def add_activity():
+#     # get information fron the form
+#     project_id = request.form['project_id']
+#     # redirect to activity
+#     return render_template("/managementActivity", project_id=project_id)
+
+
+@app.route('/create_activity', methods=['GET', 'POST'])
 # render information for input to activities table
 def create_activities():
+    if request.method == 'GET':
+        project_id = request.args.get("project_id")
+        return redirect(url_for('form_activities', project_id=project_id))
+
     if request.method == 'POST':
         # get information from the form
         id = uuid.uuid4()
         name = request.form['name']
         date = request.form['date']
         description = request.form['description']
-        user_id = session['user_id']
+        project_id = request.form['project_id']
         # create cursor for execute query
         cursor = mydb.cursor()
         # consult for create a new node
-        node_query = "INSERT INTO activities(id, name, date, description, user_id) VALUES (%s,%s, %s, %s, %s)"
-        values = (str(id), name, date, description, user_id)
+        node_query = "INSERT INTO activities(id, name, date, description, project_id) VALUES (%s,%s, %s, %s, %s)"
+        values = (str(id), name, date, description, project_id)
         cursor.execute(node_query, values)
         mydb.commit()
         # close cursor

@@ -113,7 +113,7 @@
                     </tr>
                 </table>
                 <div class="button-container">
-                    <input type="submit" id="add-row" value="Add project" class="button">
+                    <input type="submit" id="add-row" value="Create project" class="button">
                     <!-- <button type="button" id="remove-row" class="button"> Remove last project </button> -->
                 </div>
                 <br>
@@ -123,9 +123,9 @@
                 <thead>
                     <tr>
                         <th>Name</th>
-                        <th>Company</th>
-                        <th>Description</th>
                         <th>Date</th>
+                        <th>Description</th>
+                        <th>Company</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -133,13 +133,17 @@
                     {% for project in projects %}
                     <tr>
                         <td>{{ project[1] }}</td>
-                        <td>{{ project[4] }}</td>
-                        <td>{{ project[3] }}</td>
                         <td>{{ project[2] }}</td>
+                        <td>{{ project[3] }}</td>
+                        <td>{{ project[4] }}</td>
                         <td>
-                            <form action="" method="POST">
+                            <form action="/delete_project" method="POST">
                                 <input type="hidden" name="project_id" value="{{ project[0] }}">
-                                <button type="submit">Delete project</button>
+                                <input type="submit" value="Delete project">
+                            </form>
+                            <form action="/create_activity" method="GET">
+                                <input type="hidden" name="project_id" value="{{ project[0] }}">
+                                <input type="submit" value="Create activities">
                             </form>
                         </td>
                     </tr>
