@@ -227,3 +227,47 @@ if __name__ == "__main__":
     app.config.from_object(config["development"])
     app.register_error_handler(404, pagina_no_encontrada)
     app.run(debug=True, port=5000)
+
+#Redirects the chosen language and saves the choice of language in cookies
+@app.route('/set_language', methods=['POST'])
+def set_language():
+    language = request.form['language']
+    response = make_response('Idioma guardado')
+    response.set_cookie('language', language)
+    return response
+
+#Each time one of the paths in your application that renders an HTML templateis called,
+#you retrieve the language selected by the user from the cookie and, based on that,
+render the corresponding template in the selected language.
+
+@app.route('/index')
+def index():
+    language = request.cookies.get('language', 'en')
+    if language == 'en':
+        return render_template('index.html')
+    elif language == 'es':
+        return render_template('indexEsp.html')
+
+@app.route('/management_activity')
+def management_activity():
+    language = request.cookies.get('language', 'en')
+    if language == 'en':
+        return render_template('managementActivity.html')
+    elif language == 'es':
+        return render_template('managementActivityEsp.html')
+
+@app.route('/projects_table')
+def projects_table():
+    language = request.cookies.get('language', 'en')
+    if language == 'en':
+        return render_template('projectsTable.html')
+    elif language == 'es':
+        return render_template('projectsTableEsp.html')
+
+@app.route('/projects_user')
+def projects_user():
+    language = request.cookies.get('language', 'en')
+    if language == 'en':
+        return render_template('projectsUser.html')
+    elif language == 'es':
+        return render_template('projectsUserEsp.html')
