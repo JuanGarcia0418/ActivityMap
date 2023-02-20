@@ -18,7 +18,7 @@ id = uuid.uuid4()
 
 # Insertar datos con UUID
 consulta = "INSERT INTO user(id, username, password, fullname, user_type) VALUES (%s,%s,%s,%s,%s)"
-values = (str(id),'Luiyi', '1234', 'Luiyi Hurtado', 'admin')
+values = (str(id),'Test', 'test', 'User test', 'test')
 cursor.execute(consulta, values)
 
 # Hacer commit y cerrar conexión
