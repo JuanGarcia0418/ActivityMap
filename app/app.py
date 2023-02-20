@@ -116,6 +116,16 @@ def create_projects():
     return redirect(url_for('form_projects'))
 
 
+# @app.route('/delete_project/<project_id>', methods=['POST'])
+# def delete_project(project_id):
+#     cursor = mydb.cursor()
+#     delete_query = "DELETE FROM projects WHERE id = %s"
+#     cursor.execute(delete_query, (project_id,))
+#     mydb.commit()
+#     cursor.close()
+#     return redirect(url_for('form_projects'))
+
+
 @app.route('/create_activity', methods=['POST', 'GET'])
 # render information for input to activities table
 def create_activities():
@@ -130,7 +140,7 @@ def create_activities():
         cursor = mydb.cursor()
         # consult for create a new node
         node_query = "INSERT INTO activities(id, name, date, description, user_id) VALUES (%s,%s, %s, %s, %s)"
-        values = (str(id) ,name, date, description, user_id)
+        values = (str(id), name, date, description, user_id)
         cursor.execute(node_query, values)
         mydb.commit()
         # close cursor

@@ -33,4 +33,4 @@ class Activity(Base):
     date = Column(Date, nullable=False)
     description = Column(Text, nullable=False)
     user_id = Column(String(36), ForeignKey('user.id'), nullable=False)
-    activity_id = Column(String(36), ForeignKey('projects.id'), nullable=False)
+    project_id = Column(String(36), ForeignKey('projects.id'), nullable=False)

@@ -136,7 +136,12 @@
                         <td>{{ project[4] }}</td>
                         <td>{{ project[3] }}</td>
                         <td>{{ project[2] }}</td>
-                        <td><a href="/projects/{{ project.id }}/activities">Create activities</a></td>
+                        <td>
+                            <form action="" method="POST">
+                                <input type="hidden" name="project_id" value="{{ project[0] }}">
+                                <button type="submit">Delete project</button>
+                            </form>
+                        </td>
                     </tr>
                     {% endfor %}
                 </tbody>
