@@ -110,12 +110,33 @@
                         <td><input type="text" name="company_name" id="company_name"></td>
                         <td><input type="date" name="date" id="date"></td>
                         <td><input type="text" name="requirements" id="requiremnts"></td>
+                        <td>
+                        </td>
                     </tr>
                 </table>
                 <div class="button-container">
                     <input type="submit" id="add-row" value="Create project" class="button">
                 </div>
                 <br>
+            </form>
+            <form method="POST" action="/assign_project">
+                <label for="user_id">Seleccionar cliente:</label>
+                <select id="user_id" name="user_id">
+                    {% for user in users %}
+                    {% if user[4] == 'cliente' %}
+                    <option value="{{ user[0] }}">{{ user[3] }}</option>
+                    {% endif %}
+                    {% endfor %}
+                </select>
+                <br>
+                <label for="project_id">Seleccionar proyecto:</label>
+                <select id="project_id" name="project_id">
+                    {% for project in projects %}
+                    <option value="{{ project[0] }}">{{ project[1] }}</option>
+                    {% endfor %}
+                </select>
+                <br>
+                <button type="submit">Asignar proyecto</button>
             </form>
             <!-- table for show all projects -->
             <table>

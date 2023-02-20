@@ -92,19 +92,25 @@ def form_projects():
     # create query for show data
     if current_user.user_type == "admin":
         cursor = mydb.cursor()
-        projects_query = "SELECT * FROM projects"
-        cursor.execute(projects_query)
-        project = cursor.fetchall()
-        return render_template("projectsTable.html", projects=project)
+
+        cursor.execute("SELECT * FROM user")
+        users = cursor.fetchall()
+
+        cursor.execute("SELECT * FROM projects")
+        projects = cursor.fetchall()
+        cursor.close()
+
+        return render_template("projectsTable.html", users=users, projects=projects)
     # get the loged user_id
     # create query for show data
     user_id = session["user_id"]
     cursor = mydb.cursor()
-    projects_query = "SELECT * FROM projects WHERE user_id = %s "
-    cursor.execute(projects_query)
+    projects_query = "SELECT projects.name, projects.date, projects.description, projects.company_name FROM projects INNER JOIN user_projects ON projects.id = user_projects.project_id WHERE user_projects.user_id = %s"
+    cursor.execute(projects_query, (user_id,))
     project = cursor.fetchall()
+    cursor.close()
     # render table
-    return render_template("projectsTable.html", projects=project)
+    return render_template("tableUser.html", projects=project)
 
 
 @app.route("/form_activity")
@@ -116,22 +122,50 @@ def form_activities():
 # render information for input to projects table
 def create_projects():
     if request.method == "POST":
-        # get information from the form
+        # # get information from the form
         id = uuid.uuid4()
         name = request.form["name"]
-        company_name = request.form["company_name"]
         date = request.form["date"]
         requirements = request.form["requirements"]
+        company_name = request.form["company_name"]
         # create query for insert data
         cursor = mydb.cursor()
         project_query = "INSERT INTO projects(id, name, date, description, company_name) VALUES (%s,%s, %s, %s, %s)"
         values = (str(id), name, date, requirements, company_name)
         cursor.execute(project_query, values)
+        
         mydb.commit()
-        # close cursor
         cursor.close()
-        return redirect(url_for("form_projects"))
-            # render
+    #render
+    return redirect(url_for("form_projects"))
+        
+@app.route('/assign_project', methods=['GET', 'POST'])
+# assigne project for the client
+def assign_project():
+    if request.method == 'POST':
+        id = uuid.uuid4()
+
+        user_id = request.form['user_id']
+        project_id = request.form['project_id']
+
+        cursor = mydb.cursor()
+        assign_query = "INSERT INTO user_projects (id, user_id, project_id) VALUES (%s,%s,%s)"
+        values = (str(id), user_id, project_id)
+        cursor.execute(assign_query, values)
+        mydb.commit()
+        return redirect(url_for('form_projects'))
+        
+    
+    if current_user.user_type == "cliente":
+
+        cursor.execute("SELECT * FROM user")
+        users = cursor.fetchall()
+        cursor.execute("SELECT * FROM projects")
+        projects = cursor.fetchall()
+        cursor.close()
+    return redirect(url_for('form_projects'))
+
+
 
 @app.route("/delete_project/", methods=["POST"])
 def delete_project():
@@ -147,18 +181,12 @@ def delete_project():
     # rediret after delte project
     return redirect(url_for("form_projects"))
 
+
 @app.route('/userproject', methods=["POST"])
 def projectsUser():
     if request.method == 'POST':
         return render_template('projectsUser.html')
 
-# @app.route('/add_activity')
-# # asigne project for one activity
-# def add_activity():
-#     # get information fron the form
-#     project_id = request.form['project_id']
-#     # redirect to activity
-#     return render_template("/managementActivity", project_id=project_id)
 
 
 @app.route("/create_activity", methods=["GET", "POST"])
@@ -209,7 +237,8 @@ def get_activities():
     # generate JSON with the all data
     graph_data = {
         "nodes": [
-            {"data": {"name": node[1], "date": node[2], "description": node[3]}}
+            {"data": {"name": node[1], "date": node[2],
+                      "description": node[3]}}
             for node in nodes_data
         ]
         # "edges": [{"data": {"id": edge[0], "source": edge[1], "target": edge[2]}}
