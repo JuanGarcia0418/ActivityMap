@@ -153,12 +153,13 @@ def create_activities():
         name = request.form['name']
         date = request.form['date']
         description = request.form['description']
+        user_id = session['user_id']
         project_id = request.form['project_id']
         # create cursor for execute query
         cursor = mydb.cursor()
         # consult for create a new node
-        node_query = "INSERT INTO activities(id, name, date, description, project_id) VALUES (%s,%s, %s, %s, %s)"
-        values = (str(id), name, date, description, project_id)
+        node_query = "INSERT INTO activities(id, name, date, description, user_id, project_id) VALUES (%s,%s, %s, %s, %s,%s)"
+        values = (str(id), name, date, description, user_id, project_id)
         cursor.execute(node_query, values)
         mydb.commit()
         # close cursor
