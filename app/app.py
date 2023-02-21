@@ -1,20 +1,5 @@
-from flask import (
-    Flask,
-    redirect,
-    request,
-    render_template,
-    url_for,
-    session,
-    abort,
-    jsonify,
-)
-from flask_login import (
-    LoginManager,
-    login_user,
-    logout_user,
-    login_required,
-    current_user,
-)
+from flask import Flask, redirect, request, render_template, url_for, session, abort, jsonify
+from flask_login import LoginManager, login_user, logout_user, login_required, current_user
 import uuid
 import mysql.connector
 from mysql.connector import connect, Error
