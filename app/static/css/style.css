@@ -1085,9 +1085,43 @@ input[type="text"] {
   transition: background-color 0.3s ease-in-out;
 }
 
-.btn.logout-btn:hover {
-  background-color: #CFD3D3;
+  .btn.logout-btn:hover {
+    background-color: #CFD3D3;
+  }
+/*End logout button*/
+
+/* Button language*/
+
+.language-button {
+  border: none;
+  color: #363737;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
-/*end logout button*/
+
+.language-button-en {
+  background-color: transparent;
+  background-image: url("https://cdn.countryflags.com/thumbs/united-states-of-america/flag-round-250.png");
+  background-size: 20px 20px;
+  background-position: 10px center;
+  background-repeat: no-repeat;
+}
+
+.language-button-es {
+  background-color: transparent;
+  background-image: url("https://cdn.countryflags.com/thumbs/colombia/flag-round-250.png");
+  background-size: 20px 20px;
+  background-position: 10px center;
+  background-repeat: no-repeat;
+}
+
+.language-button:hover {
+  opacity: 0.8;
+}
+/*End button languaje*/
 
 /*# sourceMappingURL=style.css.map */
