@@ -182,8 +182,8 @@ def delete_project():
     return redirect(url_for("form_projects"))
 
 
-@app.route('/userproject', methods=["POST"])
-def projectsUser():
+@app.route('/user_project', methods=["POST"])
+def user_project():
     if request.method == 'POST':
         return render_template('projectsUser.html')
 

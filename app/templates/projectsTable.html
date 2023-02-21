@@ -52,9 +52,8 @@
                 <div class="top_contact-container">
                     <div class="tel_container">
                         <a href="">
-                            <img src="../static/images/seguridad.jpg" alt="">Welcome to our Dashboard for visualization
-                            of activities
-                            by nodes
+                            <img src="../static/images/seguridad.jpg" alt="">Bienvenido a nuestro Dashboard de
+                            visualización de mapa de actividades en nodos
                         </a>
                     </div>
                     <div class="social-container">
@@ -82,7 +81,7 @@
                         <div class="d-flex  flex-column flex-lg-row align-items-center w-100 justify-content-center">
                             <h3 style="color: white;">{{ current_user.fullname }}</h3>
                         </div>
-                        <a href="{{ url_for('logout') }}" class="logout-btn btn">Logout</a>
+                        <a href="{{ url_for('logout') }}" class="logout-btn btn">Cerrar sesión</a>
                     </div>
                 </nav>
             </div>
@@ -93,31 +92,30 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <h2 id="table">
-                        Projects management
+                        Gestion de proyectos
                     </h2>
                 </div>
             </div>
             <form id=table method="POST" action="/create_project" aling="center">
                 <table id="tabla-datos">
                     <tr>
-                        <th> Project name </th>
-                        <th> Company name </th>
-                        <th> Date </th>
-                        <th> Description project </th>
+                        <th> Nombre el proyecto </th>
+                        <th> Nombre de la compañia </th>
+                        <th> Fecha </th>
+                        <th> Requerimientos </th>
                     </tr>
                     <tr>
                         <td><input type="text" name="name" id="name"></td>
                         <td><input type="text" name="company_name" id="company_name"></td>
                         <td><input type="date" name="date" id="date"></td>
                         <td><input type="text" name="requirements" id="requiremnts"></td>
-                        <td>
-                        </td>
                     </tr>
                 </table>
                 <div class="button-container">
-                    <input type="submit" id="add-row" value="Create project" class="button">
+                    <input type="submit" id="add-row" value="Crear proyecto" class="button">
                 </div>
                 <br>
+            </form>
             </form>
             <form method="POST" action="/assign_project">
                 <label for="user_id">Seleccionar cliente:</label>
@@ -142,11 +140,11 @@
             <table>
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Date</th>
-                        <th>Description</th>
-                        <th>Company</th>
-                        <th>Actions</th>
+                        <th>Nombre del proyecto</th>
+                        <th>Fecha</th>
+                        <th>Requerimientos</th>
+                        <th>Compañia</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -160,12 +158,12 @@
                             <div class="button-container">
                                 <form action="/delete_project" method="POST">
                                     <input type="hidden" name="project_id" value="{{ project[0] }}" class="my-button">
-                                    <input type="submit" value="Delete project">
+                                    <input type="submit" value="Eliminar proyecto">
                                 </form>
 
                                 <form action="/create_activity" method="GET">
                                     <input type="hidden" name="project_id" value="{{ project[0] }}" class="my-button">
-                                    <input type="submit" value="Create activities">
+                                    <input type="submit" value="Crear actividad">
                                 </form>
 
                             </div>
