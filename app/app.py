@@ -20,6 +20,8 @@ import mysql.connector
 from mysql.connector import connect, Error
 from flask_cors import CORS
 from models.User import User
+from models.Project import Projects
+from models.Activity import Activity
 from config import config
 from model import db
 
