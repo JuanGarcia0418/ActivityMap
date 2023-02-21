@@ -17,6 +17,7 @@ from flask_login import (
 )
 import uuid
 import mysql.connector
+from mysql.connector import connect, Error
 from flask_cors import CORS
 from models.User import User
 from config import config
@@ -113,7 +114,7 @@ def form_projects():
     return render_template("tableUser.html", projects=project)
 
 
-@app.route("/form_activity")
+@app.route("/form_activities")
 def form_activities():
     return render_template("managementActivity.html")
 
@@ -189,35 +190,36 @@ def user_project():
 
 
 
-@app.route("/create_activity", methods=["GET", "POST"])
+@app.route("/create_activity/<project_id>/activities/new", methods=["GET", "POST"])
 # render information for input to activities table
-def create_activities():
-    if request.method == "GET":
-        project_id = request.args.get("project_id")
-        return redirect(url_for("form_activities", project_id=project_id))
-
+def create_activities(project_id):
     if request.method == "POST":
         # get information from the form
         id = uuid.uuid4()
         name = request.form["name"]
         date = request.form["date"]
         description = request.form["description"]
-        user_id = session["user_id"]
-        project_id = request.form["project_id"]
-        # create cursor for execute query
         cursor = mydb.cursor()
+        try:
+            with connect(**config) as connection:
+                cursor.execute('SELECT * FROM projects WHERE id = %s', (project_id,))
+                project = cursor.fetchone()
+                node_query = "INSERT INTO activities(id, name, date, description, project_id) VALUES (%s, %s, %s, %s,%s)"
+                values = (str(id), name, date, description, project_id)
+                cursor.execute(node_query, values)
+                mydb.commit()
+        # create cursor for execute query
+            return redirect(url_for('form_activities', project_id=project_id))
         # consult for create a new node
-        node_query = "INSERT INTO activities(id, name, date, description, user_id, project_id) VALUES (%s,%s, %s, %s, %s,%s)"
-        values = (str(id), name, date, description, user_id, project_id)
-        cursor.execute(node_query, values)
-        mydb.commit()
         # close cursor
-        cursor.close()
+        except Error as e:
+            print(e)
+    else:
         # redirect the user to a form page
-    return redirect(url_for("form_activities"))
+        return redirect(url_for("form_activities"))
 
 
-@app.route("/get_activities")
+"""@app.route("/get_activities")
 # generate JSON response about the activites and relations
 def get_activities():
     # get the loged user_id
@@ -246,7 +248,7 @@ def get_activities():
     }
 
     return jsonify(graph_data)
-
+"""
 
 def pagina_no_encontrada(error):
     return "<h1>La pagina no existe</h1>", 404
