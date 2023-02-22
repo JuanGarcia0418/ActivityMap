@@ -78,7 +78,6 @@ def form_projects():
         cursor.execute("SELECT * FROM projects")
         projects = cursor.fetchall()
         return render_template('projectsTable.html', users=users, projects=projects)
-    # <------------------------------------------------------------------------------>
     user_id = session["user_id"]
     projects_query = "SELECT projects.name, projects.date, " \
         "projects.description, projects.company_name " \
@@ -128,7 +127,6 @@ def assign_project():
         cursor.execute(assign_query, values)
         mydb.commit()
         return redirect(url_for('form_projects'))
-# <------------------------------------------------------------------------------------------->
     if current_user.user_type == "cliente":
         cursor.execute("SELECT * FROM user")
         users = cursor.fetchall()
@@ -187,48 +185,40 @@ def create_activities(project_id):
         cursor.execute(create_activities_query, values)
         mydb.commit()
 
-        source_id = request.form.get('source_id')
-        target_id = request.form.get('target_id')
-        relation_id = str(uuid4())
-
-        if source_id and target_id:
-            create_relation_query = "INSERT INTO relations (id, source_id, target_id) VALUES " \
-                "(%s, %s, %s)"
-            relation_values = (relation_id, source_id, target_id)
-            cursor.execute(create_relation_query, relation_values)
-            mydb.commit()
-
         return redirect(url_for('create_activities', project_id=project_id))
     else:
         cursor = mydb.cursor()
         show_activities_query = "SELECT id, name FROM activities WHERE project_id = %s"
         cursor.execute(show_activities_query, (project_id,))
-        activitie = cursor.fetchall()
+        activities = cursor.fetchall()
         mydb.commit()
         cursor.close()
-        return render_template('createActivities.html', activities=activitie, project_id=project_id)
+        return render_template('createActivities.html', activities=activities, project_id=project_id)
 
 
-# @app.route('/create_relations/<project_id>', methods=['POST'])
-# def create_relations(project_id):
-#     cursor = mydb.cursor()
-#     if request.method == 'POST':
-#         source_id = request.form['source_id']
-#         target_id = request.form['target_id']
-#         if target_id and source_id:
-#             reation_id = str(uuid4())
-#             create_relations_query = "INSERT INTO relations (id, source_id, target_id) " \
-#                 "VALUES (%s, %s, %s)"
-#             relation_values = (reation_id, source_id, target_id)
-#             cursor.execute(create_relations_query, relation_values)
-#             mydb.commit()
-#             return redirect(url_for('create_activities', project_id=project_id))
+@app.route('/create_relations', methods=['POST'])
+def create_relations():
+    """create relations for the activites table"""
+    if request.method == 'POST':
+        source_id = request.form['source_id']
+        target_id = request.form['target_id']
+        project_id = request.form['project_id']
+        reation_id = str(uuid4())
+        create_relations_query = "INSERT INTO relations (id, source_id, target_id) " \
+            "VALUES (%s, %s, %s)"
+        relation_values = (reation_id, source_id, target_id)
+        cursor = mydb.cursor()
+        cursor.execute(create_relations_query, relation_values)
+        mydb.commit()
+        cursor.close()
+        return redirect(url_for('create_activities', project_id=project_id))
 
 
 @app.route('/graph/<project_id>')
 def create_graph(project_id):
     """get data for create a graph"""
     cursor = mydb.cursor()
+
     cursor.execute(
         f"SELECT * FROM activities WHERE project_id = '{project_id}'")
     data_activities = cursor.fetchall()
@@ -236,14 +226,11 @@ def create_graph(project_id):
                    f"WHERE source_id IN (SELECT id FROM activities "
                    f"WHERE project_id = '{project_id}')")
     data_relations = cursor.fetchall()
-
     nodes = [{
         "data": {"id": activity[0], "name": activity[1], "date": activity[2].strftime('%y-%m-%d'),
                  "description": activity[3]}} for activity in data_activities]
-
     edges = [{"data": {"id": relation[0], "source": relation[1],
                        "target": relation[2]}} for relation in data_relations]
-
     graph = {"nodes": nodes, "edges": edges}
     cursor.close()
     return jsonify(graph)

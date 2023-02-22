@@ -1,8 +1,8 @@
-function Graph(project_id) {
+function Graph() {
   const containerRef = React.useRef(null);
   const [elements, setElements] = React.useState(null);
   const [selectedNode, setSelectedNode] = React.useState(null);
-  const URL_DATANODES = '/graph/2283f909-fd82-4520-b6a1-6d8db7b751a0';
+  const URL_DATANODES = `/graph/cb2de838-c038-4c7a-a894-c817c35f7f63?`;
   // // extract information from API  
   React.useEffect(() => {
     fetch(URL_DATANODES)

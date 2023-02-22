@@ -120,6 +120,7 @@
             <form method="POST" action="/assign_project">
                 <label for="user_id">Seleccionar cliente:</label>
                 <select id="user_id" name="user_id">
+                    <option value="...">...</option>
                     {% for user in users %}
                     {% if user[4] == 'cliente' %}
                     <option value="{{ user[0] }}">{{ user[3] }}</option>
@@ -129,6 +130,7 @@
                 <br>
                 <label for="project_id">Seleccionar proyecto:</label>
                 <select id="project_id" name="project_id">
+                    <option value="...">...</option>
                     {% for project in projects %}
                     <option value="{{ project[0] }}">{{ project[1] }}</option>
                     {% endfor %}

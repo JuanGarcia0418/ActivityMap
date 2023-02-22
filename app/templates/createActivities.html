@@ -71,7 +71,7 @@
       </div>
       <div class="container-fluid">
         <nav class="navbar navbar-expand-lg custom_nav-container pt-3">
-          <a class="navbar-brand" href="index.html">
+          <a class="navbar-brand" href="{{ url_for('form_projects') }}">
             <img src="../static/images/red.png" alt="">
             <span>
               DB7WS
@@ -93,18 +93,19 @@
       <div class="container">
         <div class="row justify-content-center">
           <div class="custom_heading-container ">
-            <h2>
-              Gestione sus proyectos
-            </h2>
+            <h1>
+              Gestión de actividades
+            </h1>
           </div>
         </div>
       </div>
       <div class="container layout_padding2">
         <div class="row">
           <div class="col-md-5">
-            <h1>Crear actividad</h1>
+            <h2>Crear actividades</h2><br>
             <div class="form_contaier">
-              <form method="POST" class="form-activity">
+              <form action="{{ url_for('create_activities', project_id=project_id) }}" method="POST"
+                class="form-activity">
                 <!-- <input type="hidden" name="project_id" value="{{ project_id }}"> -->
                 <div class="form-group ">
                   <label for="name">Nombre de la actividad</label>
@@ -118,25 +119,34 @@
                   <label for="description">Resultado de la actividad</label>
                   <input type="text" name="description">
                 </div>
-
-                <h2>Relaciones</h2>
-                <label>Actividad fuente:</label>
-                <select name="source_id">
-                  <option value=""></option>
-                  {% for activity in activities %}
-                  <option value="{{ activity[0] }}">{{ activity[1] }}</option>
-                  {% endfor %}
-                </select><br>
-                <label>Actividad destino:</label>
-                <select name="target_id">
-                  <option value=""></option>
-                  {% for activity in activities %}
-                  <option value="{{ activity[0] }}">{{ activity[1] }}</option>
-                  {% endfor %}
-                </select><br>
-
                 <div class="button-container">
                   <input type="submit" id="add-row" value="Añadir actividad" class="button">
+                </div>
+              </form>
+              <br>
+              <h2> Conexion de actividades</h2><br>
+              <form action="{{ url_for('create_relations') }}" method="POSt">
+                <input type="hidden" name="project_id" value="{{ project_id }}">
+                <div class="form-group">
+                  <label>Actividad fuente:</label>
+                  <select name="source_id">
+                    <option value="...">...</option>
+                    {% for activity in activities %}
+                    <option value="{{ activity[0] }}">{{ activity[1] }}</option>
+                    {% endfor %}
+                  </select><br>
+                </div>
+                <div class="form-group">
+                  <label>Actividad destino:</label>
+                  <select name="target_id">
+                    <option value="...">...</option>
+                    {% for activity in activities %}
+                    <option value="{{ activity[0] }}">{{ activity[1] }}</option>
+                    {% endfor %}
+                  </select><br>
+                </div>
+                <div class="button-container">
+                  <input type="submit" id="add-row" value="Crear relacion" class="button">
                 </div>
               </form>
             </div>
