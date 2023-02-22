@@ -1,8 +1,8 @@
-function Graph() {
+function Graph(project_id) {
   const containerRef = React.useRef(null);
   const [elements, setElements] = React.useState(null);
   const [selectedNode, setSelectedNode] = React.useState(null);
-  const URL_DATANODES = null;
+  const URL_DATANODES = '/graph/2283f909-fd82-4520-b6a1-6d8db7b751a0';
   // // extract information from API  
   React.useEffect(() => {
     fetch(URL_DATANODES)
@@ -50,7 +50,6 @@ function Graph() {
         transform: function (node, position) { return position; }
       }
     });
-    // cy.nodes('[name]').style('label', 'data(name)');
 
     // // Set listenesr for diferents action
     cy.on("mouseover", "node", function (event) {

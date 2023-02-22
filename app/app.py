@@ -1,13 +1,9 @@
 from flask import Flask, redirect, request, render_template, url_for, session, abort, jsonify
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
-import uuid
+from uuid import uuid4
 import mysql.connector
-from mysql.connector import connect, Error
 from flask_cors import CORS
 from models.User import User
-# from models.Project import Projects
-# from models.Activity import Activity
-# from models.UserProjects import UserProjects
 from config import config
 from model import db
 
@@ -26,114 +22,104 @@ login_manager.init_app(app)
 
 
 @login_manager.user_loader
-# login management
 def load_user(user_id):
+    """get user_id for the login"""
     return User.query.get(str(user_id))
 
 
 @app.route("/")
-# login section for the user
 def index():
-    return redirect(url_for("login"))
+    """login section for the user"""
+    return redirect(url_for('login'))
 
 
-@app.route("/login", methods=["GET", "POST"])
-# render login data
+@app.route("/login", methods=['GET', 'POST'])
 def login():
-    if request.method == "POST":
-        # get information from the form
-        username = request.form["username"]
-        password = request.form["password"]
+    """render login data"""
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
         user = User.query.filter_by(username=username).first()
-        # verification the correct password
         if user and user.password == password:
             login_user(user)
-            session["user_id"] = user.id
-            return redirect("/view")
-        # return to login page if the password is wrong
+            session['user_id'] = user.id
+            return redirect('/view')
         else:
-            return render_template("index.html", error="invalid username or password")
+            return render_template('index.html', error="invalid username or password")
     else:
-        return render_template("index.html")
+        return render_template('index.html')
 
 
 @app.route("/logout")
 @login_required
-# logout function and return to login page
 def logout():
+    """logout function and return to login page"""
     logout_user()
     session.pop("user_id", None)
     return redirect(url_for("login"))
 
 
 @app.route("/view")
-# function for visualization for different user
 def view():
+    """function for visualization for different user"""
     if current_user.user_type == "admin":
-        return redirect(url_for("create_projects"))
+        return redirect(url_for('create_projects'))
     else:
-        return redirect(url_for("form_projects"))
+        return redirect(url_for('form_projects'))
 
 
 @app.route("/form_project")
-# form for create and see a projects
 def form_projects():
-    # create query for show data
+    """reate query for show data"""
     if current_user.user_type == "admin":
         cursor = mydb.cursor()
         cursor.execute("SELECT * FROM user")
         users = cursor.fetchall()
         cursor.execute("SELECT * FROM projects")
         projects = cursor.fetchall()
-        cursor.close()
-        return render_template("projectsTable.html", users=users, projects=projects)
-    # get the loged user_id
-    # create query for show data
+        return render_template('projectsTable.html', users=users, projects=projects)
+    # <------------------------------------------------------------------------------>
     user_id = session["user_id"]
+    projects_query = "SELECT projects.name, projects.date, " \
+        "projects.description, projects.company_name " \
+        "FROM projects " \
+        "INNER JOIN user_projects " \
+        "ON projects.id = user_projects.project_id " \
+        "WHERE user_projects.user_id = %s"
     cursor = mydb.cursor()
-    projects_query = "SELECT projects.name, projects.date, projects.description, projects.company_name FROM projects INNER JOIN user_projects ON projects.id = user_projects.project_id WHERE user_projects.user_id = %s"
     cursor.execute(projects_query, (user_id,))
     projects = cursor.fetchall()
     cursor.close()
     # render table
-    return render_template("tableUser.html", projects=projects)
+    return render_template('tableUser.html', projects=projects)
 
 
-# @app.route("/form_activities")
-# def form_activities():
-#     cursor = mydb.cursor()
-#     cursor.execute("SELECT * FROM projects")
-#     projects = cursor.fetchall()
-#     cursor.close()
-#     return render_template("managementActivity.html", projects=projects)
-
-
-@app.route("/create_project", methods=["GET", "POST"])
-# render information for input to projects table
+@app.route("/create_project", methods=['GET', 'POST'])
 def create_projects():
+    """get information from the form"""
     if request.method == "POST":
-        # # get information from the form
-        project_id = str(uuid.uuid4())
-        name = request.form["name"]
-        date = request.form["date"]
-        requirements = request.form["requirements"]
-        company_name = request.form["company_name"]
-        # create query for insert data
+        project_id = str(uuid4())
+        name = request.form['name']
+        date = request.form['date']
+        requirements = request.form['requirements']
+        company_name = request.form['company_name']
         cursor = mydb.cursor()
-        project_query = "INSERT INTO projects(id, name, date, description, company_name) VALUES (%s,%s, %s, %s, %s)"
+        project_query = "INSERT INTO projects(id, name, date, " \
+            "description, company_name) " \
+            "VALUES (%s, %s, %s, %s, %s)"
         values = (project_id, name, date, requirements, company_name)
         cursor.execute(project_query, values)
         mydb.commit()
         cursor.close()
         return redirect(url_for("form_projects"))
-    #render
     return redirect(url_for("form_projects"))
-        
+
+
 @app.route('/assign_project', methods=['GET', 'POST'])
-# assigne project for the client
 def assign_project():
+    """assigne project for the client"""
     if request.method == 'POST':
-        assign_id = str(uuid.uuid4())
+        assign_id = str(uuid4())
         user_id = request.form['user_id']
         project_id = request.form['project_id']
         cursor = mydb.cursor()
@@ -142,24 +128,31 @@ def assign_project():
         cursor.execute(assign_query, values)
         mydb.commit()
         return redirect(url_for('form_projects'))
-        
+# <------------------------------------------------------------------------------------------->
     if current_user.user_type == "cliente":
         cursor.execute("SELECT * FROM user")
         users = cursor.fetchall()
         cursor.execute("SELECT * FROM projects")
         projects = cursor.fetchall()
         cursor.close()
-    return redirect(url_for('form_projects'))
+    return redirect(url_for('form_projects', users=users, projects=projects))
 
 
-
-@app.route("/delete_project/", methods=["POST"])
+@app.route("/delete_project/", methods=['POST'])
 def delete_project():
-    if request.method == "POST":
-        # get information fron the form
-        project_id = request.form["project_id"]
+    """get information fron the form"""
+    if request.method == 'POST':
+        project_id = request.form['project_id']
         # create query for insert data
         cursor = mydb.cursor()
+        delete_relations_query = "DELETE FROM relations " \
+            "WHERE source_id IN (SELECT id " \
+            "FROM activities " \
+            "WHERE project_id = %s) " \
+            "OR target_id IN (SELECT id " \
+            "FROM activities " \
+            "WHERE project_id = %s)"
+        cursor.execute(delete_relations_query, (project_id, project_id))
         delete_user_projects_query = "DELETE FROM user_projects WHERE project_id = %s"
         cursor.execute(delete_user_projects_query, (project_id,))
         delete_actitivity_query = "DELETE FROM activities WHERE project_id = %s"
@@ -168,35 +161,96 @@ def delete_project():
         cursor.execute(delete_project_query, (project_id,))
         mydb.commit()
         cursor.close()
-    # rediret after delte project
-    return redirect(url_for("form_projects"))
+    return redirect(url_for('form_projects'))
 
 
-@app.route('/user_project', methods=["POST"])
+@app.route('/user_project', methods=['POST'])
 def user_project():
+    """view for the user"""
     if request.method == 'POST':
         return render_template('projectsUser.html')
 
 
-
-@app.route('/create_activities/<project_id>', methods=["GET", "POST"])
-# render information for input to activities table
+@app.route('/create_activities/<project_id>', methods=['GET', 'POST'])
 def create_activities(project_id):
+    """render information for input to activities table"""
     if request.method == 'POST':
-        activity_id = str(uuid.uuid4())
+        activity_id = str(uuid4())
         name = request.form['name']
         date = request.form['date']
         description = request.form['description']
+        create_activities_query = "INSERT INTO activities" \
+            "(id, name, date, description, project_id) " \
+            "VALUES (%s, %s, %s, %s, %s)"
         cursor = mydb.cursor()
-        query = "INSERT INTO activities (id, name, date, description, project_id) VALUES (%s, %s, %s, %s,%s)"
         values = (activity_id, name, date, description, project_id)
-        cursor.execute(query, values)
+        cursor.execute(create_activities_query, values)
         mydb.commit()
-        return redirect(url_for('create_activities', project_id=project_id))
 
-    return render_template('createActivities.html', project_id=project_id)
+        source_id = request.form.get('source_id')
+        target_id = request.form.get('target_id')
+        relation_id = str(uuid4())
+
+        if source_id and target_id:
+            create_relation_query = "INSERT INTO relations (id, source_id, target_id) VALUES " \
+                "(%s, %s, %s)"
+            relation_values = (relation_id, source_id, target_id)
+            cursor.execute(create_relation_query, relation_values)
+            mydb.commit()
+
+        return redirect(url_for('create_activities', project_id=project_id))
+    else:
+        cursor = mydb.cursor()
+        show_activities_query = "SELECT id, name FROM activities WHERE project_id = %s"
+        cursor.execute(show_activities_query, (project_id,))
+        activitie = cursor.fetchall()
+        mydb.commit()
+        cursor.close()
+        return render_template('createActivities.html', activities=activitie, project_id=project_id)
+
+
+# @app.route('/create_relations/<project_id>', methods=['POST'])
+# def create_relations(project_id):
+#     cursor = mydb.cursor()
+#     if request.method == 'POST':
+#         source_id = request.form['source_id']
+#         target_id = request.form['target_id']
+#         if target_id and source_id:
+#             reation_id = str(uuid4())
+#             create_relations_query = "INSERT INTO relations (id, source_id, target_id) " \
+#                 "VALUES (%s, %s, %s)"
+#             relation_values = (reation_id, source_id, target_id)
+#             cursor.execute(create_relations_query, relation_values)
+#             mydb.commit()
+#             return redirect(url_for('create_activities', project_id=project_id))
+
+
+@app.route('/graph/<project_id>')
+def create_graph(project_id):
+    """get data for create a graph"""
+    cursor = mydb.cursor()
+    cursor.execute(
+        f"SELECT * FROM activities WHERE project_id = '{project_id}'")
+    data_activities = cursor.fetchall()
+    cursor.execute(f"SELECT * FROM relations "
+                   f"WHERE source_id IN (SELECT id FROM activities "
+                   f"WHERE project_id = '{project_id}')")
+    data_relations = cursor.fetchall()
+
+    nodes = [{
+        "data": {"id": activity[0], "name": activity[1], "date": activity[2].strftime('%y-%m-%d'),
+                 "description": activity[3]}} for activity in data_activities]
+
+    edges = [{"data": {"id": relation[0], "source": relation[1],
+                       "target": relation[2]}} for relation in data_relations]
+
+    graph = {"nodes": nodes, "edges": edges}
+    cursor.close()
+    return jsonify(graph)
+
 
 def pagina_no_encontrada(error):
+    """show error message"""
     return "<h1>La pagina no existe</h1>", 404
 
 
@@ -204,4 +258,3 @@ if __name__ == "__main__":
     app.config.from_object(config["development"])
     app.register_error_handler(404, pagina_no_encontrada)
     app.run(debug=True, port=5000)
-
