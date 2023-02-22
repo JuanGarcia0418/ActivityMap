@@ -10,4 +10,4 @@ class User(UserMixin, db.Model):
     password = db.Column(db.CHAR(102), nullable=False)
     fullname = db.Column(db.String(50), nullable=False)
     user_type = db.Column(db.String(10), nullable=False)
-    user_projects = db.relationship('UserProjects', backref='projectsUser', lazy='dynamic')
+    # user_projects = db.relationship('UserProjects', backref='projectsUser', lazy='dynamic')

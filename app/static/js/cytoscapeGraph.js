@@ -2,7 +2,7 @@ function Graph() {
   const containerRef = React.useRef(null);
   const [elements, setElements] = React.useState(null);
   const [selectedNode, setSelectedNode] = React.useState(null);
-  const URL_DATANODES = '/get_activities';
+  const URL_DATANODES = null;
   // // extract information from API  
   React.useEffect(() => {
     fetch(URL_DATANODES)

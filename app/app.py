@@ -5,8 +5,9 @@ import mysql.connector
 from mysql.connector import connect, Error
 from flask_cors import CORS
 from models.User import User
-from models.Project import Projects
-from models.Activity import Activity
+# from models.Project import Projects
+# from models.Activity import Activity
+# from models.UserProjects import UserProjects
 from config import config
 from model import db
 
@@ -80,14 +81,11 @@ def form_projects():
     # create query for show data
     if current_user.user_type == "admin":
         cursor = mydb.cursor()
-
         cursor.execute("SELECT * FROM user")
         users = cursor.fetchall()
-
         cursor.execute("SELECT * FROM projects")
         projects = cursor.fetchall()
         cursor.close()
-
         return render_template("projectsTable.html", users=users, projects=projects)
     # get the loged user_id
     # create query for show data
@@ -95,15 +93,19 @@ def form_projects():
     cursor = mydb.cursor()
     projects_query = "SELECT projects.name, projects.date, projects.description, projects.company_name FROM projects INNER JOIN user_projects ON projects.id = user_projects.project_id WHERE user_projects.user_id = %s"
     cursor.execute(projects_query, (user_id,))
-    project = cursor.fetchall()
+    projects = cursor.fetchall()
     cursor.close()
     # render table
-    return render_template("tableUser.html", projects=project)
+    return render_template("tableUser.html", projects=projects)
 
 
-@app.route("/form_activities")
-def form_activities():
-    return render_template("managementActivity.html")
+# @app.route("/form_activities")
+# def form_activities():
+#     cursor = mydb.cursor()
+#     cursor.execute("SELECT * FROM projects")
+#     projects = cursor.fetchall()
+#     cursor.close()
+#     return render_template("managementActivity.html", projects=projects)
 
 
 @app.route("/create_project", methods=["GET", "POST"])
@@ -111,7 +113,7 @@ def form_activities():
 def create_projects():
     if request.method == "POST":
         # # get information from the form
-        id = uuid.uuid4()
+        project_id = str(uuid.uuid4())
         name = request.form["name"]
         date = request.form["date"]
         requirements = request.form["requirements"]
@@ -119,11 +121,11 @@ def create_projects():
         # create query for insert data
         cursor = mydb.cursor()
         project_query = "INSERT INTO projects(id, name, date, description, company_name) VALUES (%s,%s, %s, %s, %s)"
-        values = (str(id), name, date, requirements, company_name)
+        values = (project_id, name, date, requirements, company_name)
         cursor.execute(project_query, values)
-        
         mydb.commit()
         cursor.close()
+        return redirect(url_for("form_projects"))
     #render
     return redirect(url_for("form_projects"))
         
@@ -131,21 +133,17 @@ def create_projects():
 # assigne project for the client
 def assign_project():
     if request.method == 'POST':
-        id = uuid.uuid4()
-
+        assign_id = str(uuid.uuid4())
         user_id = request.form['user_id']
         project_id = request.form['project_id']
-
         cursor = mydb.cursor()
         assign_query = "INSERT INTO user_projects (id, user_id, project_id) VALUES (%s,%s,%s)"
-        values = (str(id), user_id, project_id)
+        values = (assign_id, user_id, project_id)
         cursor.execute(assign_query, values)
         mydb.commit()
         return redirect(url_for('form_projects'))
         
-    
     if current_user.user_type == "cliente":
-
         cursor.execute("SELECT * FROM user")
         users = cursor.fetchall()
         cursor.execute("SELECT * FROM projects")
@@ -162,8 +160,12 @@ def delete_project():
         project_id = request.form["project_id"]
         # create query for insert data
         cursor = mydb.cursor()
-        delete_query = "DELETE FROM projects WHERE id = %s"
-        cursor.execute(delete_query, (project_id,))
+        delete_user_projects_query = "DELETE FROM user_projects WHERE project_id = %s"
+        cursor.execute(delete_user_projects_query, (project_id,))
+        delete_actitivity_query = "DELETE FROM activities WHERE project_id = %s"
+        cursor.execute(delete_actitivity_query, (project_id,))
+        delete_project_query = "DELETE FROM projects WHERE id = %s"
+        cursor.execute(delete_project_query, (project_id,))
         mydb.commit()
         cursor.close()
     # rediret after delte project
@@ -177,112 +179,26 @@ def user_project():
 
 
 
-@app.route("/create_activity/<project_id>/activities/new", methods=["GET", "POST"])
+@app.route('/create_activities/<project_id>', methods=["GET", "POST"])
 # render information for input to activities table
 def create_activities(project_id):
-    if request.method == "POST":
-        # get information from the form
-        id = uuid.uuid4()
-        name = request.form["name"]
-        date = request.form["date"]
-        description = request.form["description"]
+    if request.method == 'POST':
+        activity_id = str(uuid.uuid4())
+        name = request.form['name']
+        date = request.form['date']
+        description = request.form['description']
         cursor = mydb.cursor()
-        try:
-            with connect(**config) as connection:
-                cursor.execute('SELECT * FROM projects WHERE id = %s', (project_id,))
-                project = cursor.fetchone()
-                node_query = "INSERT INTO activities(id, name, date, description, project_id) VALUES (%s, %s, %s, %s,%s)"
-                values = (str(id), name, date, description, project_id)
-                cursor.execute(node_query, values)
-                mydb.commit()
-        # create cursor for execute query
-            return redirect(url_for('form_activities', project_id=project_id))
-        # consult for create a new node
-        # close cursor
-        except Error as e:
-            print(e)
-    else:
-        # redirect the user to a form page
-        return redirect(url_for("form_activities"))
+        query = "INSERT INTO activities (id, name, date, description, project_id) VALUES (%s, %s, %s, %s,%s)"
+        values = (activity_id, name, date, description, project_id)
+        cursor.execute(query, values)
+        mydb.commit()
+        return redirect(url_for('create_activities', project_id=project_id))
 
-
-"""@app.route("/get_activities")
-# generate JSON response about the activites and relations
-def get_activities():
-    # get the loged user_id
-    user_id = session.get("user_id")
-    # crete cursor for excute query
-    cursor = mydb.cursor()
-    # create query for get activities data
-    nodes_query = "SELECT * FROM activities WHERE user_id = %s"
-    cursor.execute(nodes_query, (user_id,))
-    nodes_data = cursor.fetchall()
-    # create query for get relations data
-    # edges_query = 'SELECT * FROM relations WHERE user_id = %s'
-    # cursor.execute(edges_query, (user_id,))
-    # edges_data = cursor.fetchall()
-    # close cursor
-    cursor.close()
-    # generate JSON with the all data
-    graph_data = {
-        "nodes": [
-            {"data": {"name": node[1], "date": node[2],
-                      "description": node[3]}}
-            for node in nodes_data
-        ]
-        # "edges": [{"data": {"id": edge[0], "source": edge[1], "target": edge[2]}}
-        #           for edge in edges_data]
-    }
-
-    return jsonify(graph_data)
-"""
+    return render_template('createActivities.html', project_id=project_id)
 
 def pagina_no_encontrada(error):
     return "<h1>La pagina no existe</h1>", 404
 
-#Redirects the chosen language and saves the choice of language in cookies
-@app.route('/set_language', methods=['POST'])
-def set_language():
-    language = request.form['language']
-    response = make_response('Idioma guardado')
-    response.set_cookie('language', language)
-    return response
-
-#Each time one of the paths in your application that renders an HTML templateis called,
-#you retrieve the language selected by the user from the cookie and, based on that,
-# # render the corresponding template in the selected language.
-
-# @app.route('/index')
-# def index():
-#     language = request.cookies.get('language', 'en')
-#     if language == 'en':
-#         return render_template('index.html')
-#     elif language == 'es':
-#         return render_template('indexEsp.html')
-
-# @app.route('/management_activity')
-# def management_activity():
-#     language = request.cookies.get('language', 'en')
-#     if language == 'en':
-#         return render_template('managementActivity.html')
-#     elif language == 'es':
-#         return render_template('managementActivityEsp.html')
-
-# @app.route('/projects_table')
-# def projects_table():
-#     language = request.cookies.get('language', 'en')
-#     if language == 'en':
-#         return render_template('projectsTable.html')
-#     elif language == 'es':
-#         return render_template('projectsTableEsp.html')
-
-# @app.route('/projects_user')
-# def projects_user():
-#     language = request.cookies.get('language', 'en')
-#     if language == 'en':
-#         return render_template('projectsUser.html')
-#     elif language == 'es':
-#         return render_template('projectsUserEsp.html')
 
 if __name__ == "__main__":
     app.config.from_object(config["development"])
