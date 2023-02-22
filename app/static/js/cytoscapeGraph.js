@@ -1,4 +1,6 @@
-function Graph(project_id) {
+function Graph() {
+  const currrentURL = window.location.href;
+  const project_id = currrentURL.split('/').pop();
   const containerRef = React.useRef(null);
   const [elements, setElements] = React.useState(null);
   const [selectedNode, setSelectedNode] = React.useState(null);
@@ -38,15 +40,12 @@ function Graph(project_id) {
           'width': 3,
           'line-color': 'black',
           'curve-style': 'bezier',
-          // 'target-arrow-color': 'black',
-          // 'target-arrow-shape': 'triangle',
         }
       }],
       layout: {
         name: 'breadthfirst',
         fit: true, directed: true, padding: 30, grid: true, spacingFactor: 1.70,
         roots: undefined, depthSort: undefined, animate: true, animationDuration: 500,
-        // // Get a central position for the graph
         transform: function (node, position) { return position; }
       }
     });
@@ -89,10 +88,10 @@ function Popup({ node, onClose }) {
         React.createElement("h2", null, node.name),
         React.createElement("div", { className: "node-info" },
           React.createElement("p", null,
-            React.createElement("span", null, node.name),
+            React.createElement("span", null, "Fecha de creacion"),
             React.createElement("br", null), node.date),
           React.createElement("p", null,
-            React.createElement("span", null, "Test result"),
+            React.createElement("span", null, "Resultado de la actividad"),
             React.createElement("br", null),
             node.description
           )

@@ -107,7 +107,6 @@
             <div class="form_contaier">
               <form action="{{ url_for('create_activities', project_id=project_id) }}" method="POST"
                 class="form-activity">
-                <!-- <input type="hidden" name="project_id" value="{{ project_id }}"> -->
                 <div class="form-group ">
                   <label for="name">Nombre de la actividad</label>
                   <input type="text" name="name">
@@ -126,7 +125,7 @@
               </form>
               <br>
               <h2> Conexion de actividades</h2><br>
-              <form action="{{ url_for('create_relations') }}" method="POSt">
+              <form action="{{ url_for('create_relations') }}" method="POST">
                 <input type="hidden" name="project_id" value="{{ project_id }}">
                 <div class="form-group">
                   <label>Actividad fuente:</label>

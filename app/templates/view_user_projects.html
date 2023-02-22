@@ -111,13 +111,13 @@
                 <tbody>
                     {% for project in projects %}
                     <tr>
-                        <td>{{ project[0] }}</td>
                         <td>{{ project[1] }}</td>
                         <td>{{ project[2] }}</td>
                         <td>{{ project[3] }}</td>
+                        <td>{{ project[4] }}</td>
                         <td>
                             <div class="button-container">
-                                <form action="/user_project" method="POST">
+                                <form action="{{ url_for('view_user_activities', project_id=project[0]) }}" method="GET">
                                     <input type="submit" value="Ver actividades" class="my-button">
                                 </form>
                             </div>

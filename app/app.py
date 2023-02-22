@@ -77,9 +77,9 @@ def form_projects():
         users = cursor.fetchall()
         cursor.execute("SELECT * FROM projects")
         projects = cursor.fetchall()
-        return render_template('projectsTable.html', users=users, projects=projects)
+        return render_template('create_projects.html', users=users, projects=projects)
     user_id = session["user_id"]
-    projects_query = "SELECT projects.name, projects.date, " \
+    projects_query = "SELECT projects.id, projects.name, projects.date, " \
         "projects.description, projects.company_name " \
         "FROM projects " \
         "INNER JOIN user_projects " \
@@ -90,14 +90,20 @@ def form_projects():
     projects = cursor.fetchall()
     cursor.close()
     # render table
-    return render_template('tableUser.html', projects=projects)
+    return render_template('view_user_projects.html', projects=projects)
 
 
-@app.route('/user_project', methods=['POST'])
-def user_project():
+@app.route('/view_user_activities/<project_id>', methods=['GET'])
+def view_user_activities(project_id):
     """view for the user"""
-    if request.method == 'POST':
-        return render_template('projectsUser.html')
+    cursor = mydb.cursor()
+    view_activites_query = "SELECT id, name FROM activities WHERE project_id = %s"
+    cursor.execute(view_activites_query, (project_id,))
+    view_activities = cursor.fetchall()
+    mydb.commit()
+    cursor.close()
+    return render_template('view_user_activities.html',
+                           activities=view_activities, project_id=project_id)
 
 
 @app.route("/create_project", methods=['GET', 'POST'])
@@ -193,7 +199,8 @@ def create_activities(project_id):
         activities = cursor.fetchall()
         mydb.commit()
         cursor.close()
-        return render_template('createActivities.html', activities=activities, project_id=project_id)
+        return render_template('create_activities.html', activities=activities,
+                               project_id=project_id)
 
 
 @app.route('/create_relations', methods=['POST'])
