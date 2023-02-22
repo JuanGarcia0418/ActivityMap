@@ -21,14 +21,14 @@ function Graph() {
         selector: 'node',
         style: {
           'background-color': '#73c7f5',
-          'width': 250,
-          'height': 250,
+          'width': 450,
+          'height': 450,
           'border-color': '#000',
-          'border-width': 5,
+          'border-width': 9,
           'border-opacity': .9,
           // // Text into node
           'label': 'data(name)',
-          'font-size': 26,
+          'font-size': 34,
           'text-halign': 'center',
           'text-valign': 'center',
           'color': '#000'
@@ -37,7 +37,7 @@ function Graph() {
       {
         selector: 'edge',
         style: {
-          'width': 3,
+          'width': 9,
           'line-color': 'black',
           'curve-style': 'bezier',
         }
