@@ -93,6 +93,13 @@ def form_projects():
     return render_template('tableUser.html', projects=projects)
 
 
+@app.route('/user_project', methods=['POST'])
+def user_project():
+    """view for the user"""
+    if request.method == 'POST':
+        return render_template('projectsUser.html')
+
+
 @app.route("/create_project", methods=['GET', 'POST'])
 def create_projects():
     """get information from the form"""
@@ -160,13 +167,6 @@ def delete_project():
         mydb.commit()
         cursor.close()
     return redirect(url_for('form_projects'))
-
-
-@app.route('/user_project', methods=['POST'])
-def user_project():
-    """view for the user"""
-    if request.method == 'POST':
-        return render_template('projectsUser.html')
 
 
 @app.route('/create_activities/<project_id>', methods=['GET', 'POST'])
