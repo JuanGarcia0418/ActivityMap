@@ -2,5 +2,6 @@
   height: 700px;
   width: 100%;
   border: 1px solid black;
-  background-color: white;
+  /* background-color: white; */
+  background-image: url('./dots-grid.svg');
 }
