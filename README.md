@@ -7,6 +7,10 @@ A web page is a fundamental tool for any company, since it allows the disseminat
 
 This project was done to deliver the final project (Capstone Project) of the Holberton School programming academy, made with the purpose of solving a need of a company that offers services on cybersecurity, so that their customers can have a map of activities where they can keep track of the process for which they hired the service.
 
+
+![](/DB7WS/app/static/images/imageRedme.png)
+
+
 ## Technologies
 
 For the creation and operation of the website we created an api with Flask and used Mysql as database manager.
