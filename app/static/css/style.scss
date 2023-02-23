@@ -39,7 +39,7 @@ body {
 }
 
 .layout_padding {
-  padding: 100px 0;
+  padding: 5px 0;
 }
 
 .layout_padding2 {
@@ -955,7 +955,7 @@ table {
 }
 
 th, td {
-  padding: 10px;
+  padding: 2;
   text-align: left;
   border-bottom: 1px solid #ddd;
   text-align: center;
@@ -963,6 +963,7 @@ th, td {
 
 th {
   background-color: #f2f2f2;
+  opacity: 0.8;
 }
 
 input[type="text"] {
@@ -978,7 +979,7 @@ input[type="text"] {
 
 input[type="date"] {
   width: 100%;
-  padding: 8px;
+  padding: 2px;
   border: 1px solid #ccc;
   border-radius: 50px;
   box-sizing: border-box;
@@ -989,11 +990,11 @@ input[type="date"] {
 
 select {
   width: 100%;
-  padding: 8px;
+  padding: 2px;
   border: 1px solid #ccc;
   border-radius: 50px;
   box-sizing: border-box;
-  margin-top: 6px;
+  margin-top: 4px;
   margin-bottom: 16px;
   resize: vertical;
 }
@@ -1001,22 +1002,22 @@ select {
 .button-container {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 6px;
 }
 
 .button-container input[type="submit"],
 .button-container button {
   font-family: Roboto;
   font-weight: bold;
-  border: 1px solid black;
-  background-color: #7CC7F5;
+  border: 1px solid #D6DCDF;
+  background-color: #E9EBEC;
   color: #363737;
-  padding: 10px 20px;
-  border-radius: 20px;
+  padding: 5px 5px;
+  border-radius: 50px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 14px;
   margin: 10px;
   cursor: pointer;
   transition: background-color 0.3s ease;
@@ -1024,7 +1025,7 @@ select {
 
 .button-container input[type="submit"]:hover,
 .button-container button:hover {
-  background-color: #B8BCBD;
+  background-color: #E9EBEC;
   color: #FFFFFF;
 }
 
