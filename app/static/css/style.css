@@ -5,7 +5,7 @@ body {
 }
 
 .layout_padding {
-  padding: 200px 0;
+  padding: none;
 }
 
 .layout_padding2 {
@@ -68,13 +68,6 @@ body {
   height: auto;
 }
 
-.header_section {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 9999;
-}
 
 .header_section .top_contact-container {
   display: -webkit-box;
@@ -1146,10 +1139,6 @@ input:invalid {
   opacity: 0.8;
 }
 
-.content-section {
-  margin-bottom: 50px; 
-  /* ajusta el valor para que sea el mismo que la altura de la ventana fija */
-}
 /*End button languaje*/
 
 /*# sourceMappingURL=style.css.map */

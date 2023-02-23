@@ -39,7 +39,7 @@ body {
 }
 
 .layout_padding {
-  padding: 200px 0;
+  padding: none;
 }
 
 .layout_padding2 {
@@ -1101,10 +1101,6 @@ input:invalid + span:before {
 }
 /* End Error messages*/
 
-.content-section {
-  margin-bottom: 50px; 
-  /* ajusta el valor para que sea el mismo que la altura de la ventana fija */
-}
 /* form asingpro*/
 .form {
   display: flex;
