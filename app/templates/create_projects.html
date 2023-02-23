@@ -75,7 +75,7 @@
                     <a class="navbar-brand" href="index.html">
                         <img src="../static/images/red.png" alt="">
                         <span>
-                            DB7WS
+                            Activity Map 7WS
                         </span>
                     </a>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -107,10 +107,10 @@
                         <th> Acción </th>
                     </tr>
                     <tr>
-                        <td><input type="text" name="name" id="name"></td>
-                        <td><input type="text" name="company_name" id="company_name"></td>
-                        <td><input type="date" name="date" id="date"></td>
-                        <td><input type="text" name="requirements" id="requiremnts"></td>
+                        <td><input type="text" name="name" id="name"required aria-required="true"></td>
+                        <td><input type="text" name="company_name" id="company_name"required aria-required="true"></td>
+                        <td><input type="date" name="date" id="date"required aria-required="true"></td>
+                        <td><input type="text" name="requirements" id="requiremnts"required aria-required="true"></td>
                         <td>
                             <div class="button-container">
                                 <input type="submit" id="add-row" value="Crear proyecto" class="button">
@@ -129,7 +129,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <select id="user_id" name="user_id">
+                            <select id="user_id" name="user_id" required aria-required="true">
                                 <option value="...">...</option>
                                 {% for user in users %}
                                 {% if user[4] == 'cliente' %}
@@ -139,7 +139,7 @@
                             </select>
                         </td>
                         <td>
-                            <select id="project_id" name="project_id">
+                            <select id="project_id" name="project_id" required aria-required="true">
                                 <option value="...">...</option>
                                 {% for project in projects %}
                                 <option value="{{ project[0] }}">{{ project[1] }}</option>

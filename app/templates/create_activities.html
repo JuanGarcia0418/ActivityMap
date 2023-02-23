@@ -45,7 +45,7 @@
   <link href="../static/css/responsive.css" rel="stylesheet" />
 </head>
 
-<body class="sub_page">
+<body>
     <div class="hero_area">
         <!-- header section strats -->
         <header class="header_section">
@@ -75,7 +75,7 @@
                     <a class="navbar-brand" href="{{ url_for('form_projects') }}">
                         <img src="../static/images/red.png" alt="">
                         <span>
-                            DB7WS
+                            Activity Map 7WS
                         </span>
                     </a>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -108,7 +108,7 @@
                                     <th>Nombre la actividad</th>
                                 </tr>
                                 <tr>
-                                    <td><input type="text" name="name" id="name"></td>
+                                    <td><input type="text" name="name" id="name" required aria-required="true"></td>
                                 </tr>
                             </table>
                             <table id="tabla-datos">
@@ -116,7 +116,7 @@
                                     <th>Fecha</th>
                                 </tr>
                                 <tr>
-                                    <td><input type="date" name="date" id="date"></td>
+                                    <td><input type="date" name="date" id="date" required aria-required="true"></td>
                                 </tr>
                             </table>
                             <table id="tabla-datos">
@@ -124,7 +124,7 @@
                                     <th>Resultado de la actividad</th>
                                 </tr>
                                 <tr>
-                                    <td><input type="text" name="description"></td>
+                                    <td><input type="text" name="description"required aria-required="true"></td>
                                 </tr>
                             </table>
                             <div class="button-container">
@@ -139,7 +139,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <select name="source_id">
+                                        <select name="source_id" required aria-required="true">
                                             <option value="...">...</option>
                                             {% for activity in activities %}
                                             <option value="{{ activity[0] }}">{{ activity[1] }}</option>
@@ -153,7 +153,7 @@
                                     <th>Actividad destino</th>
                                 </tr>
                                 <td>
-                                    <select name="target_id">
+                                    <select name="target_id" required aria-required="true">
                                         <option value="...">...</option>
                                         {% for activity in activities %}
                                         <option value="{{ activity[0] }}">{{ activity[1] }}</option>
