@@ -798,29 +798,6 @@ a:focus {
 
 /* slider section*/
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  text-decoration: none;
-  font-family: 'Roboto', sans-serif;
-}
-
-body {
-  background-image: url(../images/bg4.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-attachment: fixed;
-}
-
-main {
-  width: 100%;
-  padding: 20px;
-  margin: auto;
-  margin-top: 100px;
-}
-
 .form-login {
   width: 400px;
   height: 340px;
@@ -1103,8 +1080,29 @@ select {
   opacity: 0.8;
 }
 /*End button languaje*/
-/* form asingpro*/
 
+/* Error messages*/
+
+input:required {
+  border-color: red;
+}
+
+input:invalid {
+  box-shadow: none;
+}
+
+input:invalid + span:before {
+  content: "Información requerida";
+  color: red;
+  font-size: 12px;
+  font-weight: normal;
+  display: block;
+  margin-bottom: 5px;
+}
+/* End Error messages*/
+
+
+/* form asingpro*/
 .form {
   display: flex;
   flex-wrap: wrap;
