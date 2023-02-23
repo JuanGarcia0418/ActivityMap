@@ -23,7 +23,7 @@ The rest of the dependencies can be found in the `requirements.txt` file.
 
 ## Authors
 
-<a href="https://www.linkedin.com/in/lfhurtado/" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="Luiyi Hurtado" height="30" width="40" /></a> | [Johanna Balcazar](https://www.linkedin.com/in/johanna-balcazar-696554240/) | [Juan Garcia](https://www.linkedin.com/in/juan-garcia-161746246/)
+<a target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" height="30" width="40" /></a> | [Luiyi Hurtado](https://www.linkedin.com/in/lfhurtado/) | [Johanna Balcazar](https://www.linkedin.com/in/johanna-balcazar-696554240/) | [Juan Garcia](https://www.linkedin.com/in/juan-garcia-161746246/)
 
 
-<a href = 'https://github.com/Luiyi-F'> <img width = '32px' align= 'center' src="https://raw.githubusercontent.com/rahulbanerjee26/githubAboutMeGenerator/main/icons/github.svg" alt="Luiyi Hurtado"/></a> | [Johanna Balcazar](https://github.com/LiJoBaZar) | [Juan Garcia](https://github.com/JuanGarcia0418)
+<a href = 'https://github.com/Luiyi-F'> <img width = '32px' align= 'center' src="https://raw.githubusercontent.com/rahulbanerjee26/githubAboutMeGenerator/main/icons/github.svg" /></a> | [Luiyi Hurtado](https://github.com/Luiyi-F) | [Johanna Balcazar](https://github.com/LiJoBaZar) | [Juan Garcia](https://github.com/JuanGarcia0418)
