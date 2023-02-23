@@ -249,15 +249,21 @@ textarea {
 button,
 input {
   overflow: visible;
+  border-radius: 5px;
+  text-align: center;
 }
 
 button,
 select {
   text-transform: none;
+  border-radius: 5px;
+  text-align: center;
 }
 
 select {
   word-wrap: normal;
+  border-radius: 5px;
+  text-align: center;
 }
 
 button,
@@ -265,6 +271,8 @@ button,
 [type="reset"],
 [type="submit"] {
   -webkit-appearance: button;
+  border-radius: 5px;
+  text-align: center;
 }
 
 button:not(:disabled),
@@ -2012,11 +2020,12 @@ textarea.form-control {
   margin-left: -5px;
 }
 
-.form-row > .col,
-.form-row > [class*="col-"] {
-  padding-right: 5px;
-  padding-left: 5px;
-}
+  .form-row > .col,
+  .form-row > [class*="col-"] {
+    padding-right: 5px;
+    padding-left: 5px;
+    justify-content-center;
+  }
 
 .form-check {
   position: relative;

@@ -430,8 +430,7 @@ a:focus {
 
   .row {
     align-items: center;
-
-    .col-lg-7 {
+     justify-content-center;
       padding: 0;
     }
   }
@@ -443,7 +442,7 @@ a:focus {
       text-transform: uppercase;
       font-size: 2.5rem;
       font-weight: bold;
-      align-content:center;
+      align-content: center;
 
       span {
         color: $primary;
@@ -545,7 +544,6 @@ a:focus {
   .owl-carousel .owl-nav.disabled {
     display: block;
 
-    &>div {
       position: absolute;
       top: -65px;
       background-color: #2c2c2c;
@@ -705,6 +703,7 @@ a:focus {
     form {
       .form-group {
         margin-bottom: 20px;
+        border-radius: 50px;
       }
 
       .form-control {
@@ -977,6 +976,28 @@ input[type="text"] {
   resize: vertical;
 }
 
+input[type="date"] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 50px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 50px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
 .button-container {
   display: flex;
   justify-content: center;
@@ -1081,3 +1102,15 @@ input[type="text"] {
   opacity: 0.8;
 }
 /*End button languaje*/
+/* form asingpro*/
+
+.form {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+label, select, button {
+  flex: 1 1 200px;
+  margin-right: 10px;
+}
+/* end form asingpro*/

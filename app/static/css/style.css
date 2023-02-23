@@ -733,6 +733,7 @@ a:focus {
 
 .contact_section .form_contaier form .form-group {
   margin-bottom: 20px;
+  border-radius: 50px;
 }
 
 .contact_section .form_contaier form .form-control {
@@ -1012,6 +1013,27 @@ input[type="text"] {
   resize: vertical;
 }
 
+input[type="date"] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 50px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 50px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
 
 @media screen and (max-width: 600px) {
   form {
@@ -1070,6 +1092,7 @@ input[type="text"] {
       background-color: #B8BCBD;
       color: #FFFFFF;
     }
+
 /*end proyect section*/
 
 /*logout button*/
