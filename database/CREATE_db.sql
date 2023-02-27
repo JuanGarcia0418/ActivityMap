@@ -1,2 +1,2 @@
 -- create database
-CREATE DATABASE DB7WS;
+CREATE DATABASE activity-map;
