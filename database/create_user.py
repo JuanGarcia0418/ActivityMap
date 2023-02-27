@@ -6,7 +6,7 @@ mydb = mysql.connector.connect(
     host="localhost",
     user="root",
     passwd="root",
-    database="DB7WS"
+    database="activityMap"
 )
 username = input("add the user name: ")
 password = input("add password: ")
