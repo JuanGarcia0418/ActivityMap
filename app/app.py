@@ -9,13 +9,13 @@ from model import db
 
 app = Flask(__name__)
 CORS(app)
-app.config["SQLALCHEMY_DATABASE_URI"] = "mysql://root:root@localhost/DB7WS"
+app.config["SQLALCHEMY_DATABASE_URI"] = "mysql://root:root@localhost/activityMap"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db.init_app(app)
 
 # conecction for the database
 mydb = mysql.connector.connect(
-    host="localhost", user="root", password="root", database="DB7WS"
+    host="localhost", user="root", password="root", database="activityMap"
 )
 login_manager = LoginManager()
 login_manager.init_app(app)
