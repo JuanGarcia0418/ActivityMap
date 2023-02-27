@@ -1,5 +1,5 @@
 
-# Activity Map 7WS
+# Activity Map
 
 A web page is a fundamental tool for any company, since it allows the dissemination of information and contents that make possible the knowledge and understanding of the target public. This tool also helps in the internal communication among the company's employees, facilitating the flow of information.
 
