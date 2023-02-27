@@ -1,2 +1,2 @@
 -- delete database
-DROP DATABASE DB7WS;
+DROP DATABASE activityMap;
