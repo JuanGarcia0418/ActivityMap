@@ -5,7 +5,7 @@ import uuid
 
 
 class User(Base):
-    """Create table for database DB7WS"""
+    """Create table for database activityMap"""
     __tablename__ = 'user'
     id = Column(String(36), primary_key=True, default=str(
         uuid.uuid4()), unique=True, nullable=False)
@@ -18,7 +18,7 @@ class User(Base):
 
 
 class Projects(Base):
-    """Create table for database DB7WS"""
+    """Create table for database activityMap"""
     __tablename__ = 'projects'
     id = Column(String(36), primary_key=True, default=str(
         uuid.uuid4()), unique=True, nullable=False)
@@ -32,7 +32,7 @@ class Projects(Base):
 
 
 class Activity(Base):
-    """Create table for database DB7WS"""
+    """Create table for database activityMap"""
     __tablename__ = 'activities'
     id = Column(String(36), primary_key=True, default=str(
         uuid.uuid4()), unique=True, nullable=False)
@@ -44,7 +44,7 @@ class Activity(Base):
 
 
 class User_project(Base):
-    """Create table for database DB7WS"""
+    """Create table for database activityMap"""
     __tablename__ = 'user_projects'
     id = Column(String(36), primary_key=True, default=str(
         uuid.uuid4()), unique=True, nullable=False)
@@ -53,7 +53,7 @@ class User_project(Base):
 
 
 class Relation(Base):
-    """Create table for database DB7WS"""
+    """Create table for database activityMap"""
     __tablename__ = 'relations'
     id = Column(String(36), primary_key=True, default=str(
         uuid.uuid4()), unique=True, nullable=False)
