@@ -1,2 +1,2 @@
 -- create database
-CREATE DATABASE activity-map;
+CREATE DATABASE activityMap;
